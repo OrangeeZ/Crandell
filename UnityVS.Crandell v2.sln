@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.Crandell v2.CSharp", "UnityVS.Crandell v2.CSharp.csproj", "{6BC02562-F050-7EFC-1A2B-ABDCB230165D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.Crandell v2.CSharp.Editor", "UnityVS.Crandell v2.CSharp.Editor.csproj", "{F920741A-B4A7-278D-5449-8FC148FA3991}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6BC02562-F050-7EFC-1A2B-ABDCB230165D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BC02562-F050-7EFC-1A2B-ABDCB230165D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BC02562-F050-7EFC-1A2B-ABDCB230165D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BC02562-F050-7EFC-1A2B-ABDCB230165D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F920741A-B4A7-278D-5449-8FC148FA3991}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F920741A-B4A7-278D-5449-8FC148FA3991}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F920741A-B4A7-278D-5449-8FC148FA3991}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F920741A-B4A7-278D-5449-8FC148FA3991}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
