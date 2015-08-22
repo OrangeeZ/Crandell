@@ -27,6 +27,8 @@ public class MoveStateInfo : CharacterStateInfo {
 
         private Vector3 GetMoveDirection() {
 
+            Debug.Log( new Vector3( Input.GetAxis( "Horizontal" ), 0, Input.GetAxis( "Vertical" ) ) );
+
             return new Vector3( Input.GetAxis( "Horizontal" ), 0, Input.GetAxis( "Vertical" ) ); //GameScreen.instance.moveJoystick.GetValue();
         }
 

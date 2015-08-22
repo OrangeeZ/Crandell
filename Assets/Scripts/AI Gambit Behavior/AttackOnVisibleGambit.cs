@@ -9,15 +9,12 @@ namespace AI.Gambits {
 	public class AttackOnVisibleGambit : GambitInfo {
 
 		private class GambitInternal : Gambit {
-
-			private readonly GambitInfo _info;
-
+            
 			private Character attackTarget;
 
 			public GambitInternal( GambitInfo info, Character character )
 				: base( character ) {
-
-				this._info = info;
+                
 				character.pawn.GetSphereSensor().Select( _ => _.character ).Subscribe( OnTargetEnter );
 			}
 

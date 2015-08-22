@@ -11,9 +11,9 @@ public class CharacterPlanetPawn : CharacterPawn {
     private Vector3? _destination;
     public bool canFollowDestination;
 
-    private void Awake() {
+    protected override void Start() {
 
-        planetTransform = new PlanetSurfaceTransform( FindObjectOfType<Planet>() );
+        planetTransform = new PlanetSurfaceTransform( Planet.instance );
 
         planetTransform.SetHeight( _startingHeight );
     }

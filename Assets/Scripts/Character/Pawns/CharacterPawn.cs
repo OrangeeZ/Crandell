@@ -16,7 +16,7 @@ public class CharacterPawn : AObject {
 
 	public Character character { get; private set; }
 
-	void Start() {
+	protected virtual void Start() {
 
 		if ( animatedViewPrefab != null ) {
 
