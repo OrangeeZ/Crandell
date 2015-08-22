@@ -54,7 +54,7 @@ namespace UniRx
         }
 
         /// <summary>
-        /// Set and raise isReverse value.
+        /// Set and raise reverse value.
         /// </summary>
         public void SwitchValue()
         {

@@ -48,7 +48,7 @@ public class UIJoystick : AObject, IBeginDragHandler, IEndDragHandler, IDragHand
 
     public Vector3 GetValue() {
 
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN 
         if ( simulateInput ) {
 
             return FormVector( Input.GetAxis( "Horizontal" ), Input.GetAxis( "Vertical" ) );

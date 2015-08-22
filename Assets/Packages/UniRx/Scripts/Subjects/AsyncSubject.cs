@@ -4,7 +4,7 @@ using UniRx.InternalUtil;
 
 namespace UniRx
 {
-    public sealed class AsyncSubject<T> : ISubject<T>
+    public sealed class AsyncSubject<T> : ISubject<T>, IOptimizedObservable<T>
     {
         object observerLock = new object();
 
@@ -62,8 +62,6 @@ namespace UniRx
             {
                 old.OnCompleted();
             }
-
-            old.OnCompleted();
         }
 
         public void OnError(Exception error)
@@ -167,6 +165,11 @@ namespace UniRx
         void ThrowIfDisposed()
         {
             if (isDisposed) throw new ObjectDisposedException("");
+        }
+
+        public bool IsRequiredSubscribeOnCurrentThread()
+        {
+            return false;
         }
 
         class Subscription : IDisposable

@@ -97,11 +97,6 @@ namespace UniRx
         {
 
         }
-
-	    public static implicit operator double( DoubleReactiveProperty doubleReactiveProperty ) {
-
-		    return doubleReactiveProperty.Value;
-	    }
     }
 
     /// <summary>
