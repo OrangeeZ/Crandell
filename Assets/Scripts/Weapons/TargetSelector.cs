@@ -10,7 +10,7 @@ public static class TargetSelector {
         var characterToDirectionMap = Character.instances
             .Where( _ => _ != currentCharacter )
             .Select( _ => new {character = _, direction = Vector3.Dot( planetTransform.GetDirectionTo( _.pawn.position ), direction )} )
-            .Where( _ => _.direction >= 0.95f )
+            .Where( _ => _.direction >= 0.85f )
             .ToList();
 
         characterToDirectionMap.Sort( ( a, b ) => a.direction.CompareTo( b.direction ) );
