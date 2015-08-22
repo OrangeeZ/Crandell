@@ -16,6 +16,8 @@ public class PlanetSurfaceTransform {
 
     public void Move( Transform transform, Vector3 direction, float speed ) {
 
+        Debug.Log( direction );
+
         var distance = height + _planet.radius;
 
         var circleLength = 2f * Mathf.PI * distance;
@@ -24,7 +26,7 @@ public class PlanetSurfaceTransform {
 
         var zAngle = direction.z * angularMoveSpeed;
         var xAngle = -direction.x * angularMoveSpeed;
-
+        
         transform.rotation *= Quaternion.AngleAxis( zAngle, Vector3.right ) *
                               Quaternion.AngleAxis( xAngle, Vector3.forward );
 

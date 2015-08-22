@@ -19,6 +19,8 @@ public class MoveStateInfo : CharacterStateInfo {
 
             while ( CanBeSet() ) {
 
+                Debug.Log( "Moving" );
+
                 character.pawn.MoveDirection( GetMoveDirection() );
 
                 yield return null;
