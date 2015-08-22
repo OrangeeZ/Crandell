@@ -1,27 +1,15 @@
 fileFormatVersion: 2
-guid: 89f40410e794e02408a24f691c595790
-timeCreated: 1440262394
+guid: 422ae825adb261043b9bbef4afe4f195
+timeCreated: 1440283376
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
-    100002: heli
-    100004: prop
     400000: //RootNode
-    400002: heli
-    400004: prop
-    2300000: heli
-    2300002: prop
-    2300004: //RootNode
-    3300000: heli
-    3300002: prop
-    3300004: //RootNode
-    4300000: prop
-    4300002: heli
-    4300004: Cube
-    7400000: Default Take
-    9500000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Cube
   materials:
     importMaterials: 1
     materialName: 0
