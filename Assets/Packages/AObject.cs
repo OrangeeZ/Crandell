@@ -2,16 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Text;
 
-public class AObject : UnityEngine.MonoBehaviour {
-	//private Transform transformRef = null;
-	//new public Transform transform {
-	//	get {
-	//		if ( !transformRef )
-	//			transformRef = base.transform;
-
-	//		return transformRef;
-	//	}
-	//}
+public class AObject : MonoBehaviour {
 
 	public Vector3 position {
 		get {
@@ -75,31 +66,15 @@ public class AObject : UnityEngine.MonoBehaviour {
 		}
 	}
 
-	public static T Instantiate<T>( T source,
-									Vector3 position = default(Vector3),
-									Quaternion rotation = default(Quaternion),
-									Transform parent = default(Transform) ) where T : Behaviour {
-
-		var instance = Object.Instantiate( source, position, rotation ) as T;
-		instance.transform.parent = parent;
-		instance.name = source.name;
-
-		return instance;
-	}
-
-	//public static T Instantiate<T>( T source,
-	//								Vector3 position = default(Vector3),
-	//								Quaternion rotation = default(Quaternion),
-	//								Transform parent = default(Transform) ) where T : Component {
-
-	//	var instance = Instantiate( source.gameObject, position, rotation, parent );
-
-	//	return instance.GetComponent<T>();
-	//}
-
 	public void GetComponent<T>( out T target ) where T : Component {
-		target = GetComponent<T>();
+
+        target = GetComponent<T>();
 	}
+
+    public T Instantiate<T>( T prefab, Vector3 position ) where T: Object {
+
+        return Instantiate( prefab, position, Quaternion.identity ) as T;
+    }
 
 	public void Log( params object[] messages ) {
 		var result = new StringBuilder( 1024 );

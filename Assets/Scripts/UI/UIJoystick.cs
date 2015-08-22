@@ -16,6 +16,8 @@ public class UIJoystick : AObject, IBeginDragHandler, IEndDragHandler, IDragHand
     public bool simulateInput = true;
 #endif
 
+    public static UIJoystick instance { get; private set; }
+
     [SerializeField] private Mode mode;
 
     [SerializeField] private float radius = 5f;
@@ -25,6 +27,11 @@ public class UIJoystick : AObject, IBeginDragHandler, IEndDragHandler, IDragHand
     [SerializeField] private Transform root;
 
     private bool isDragging;
+
+    void Start() {
+
+        instance = this;
+    }
 
     private void LateUpdate() {
 

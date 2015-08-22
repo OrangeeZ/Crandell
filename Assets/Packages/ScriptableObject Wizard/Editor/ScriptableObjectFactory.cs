@@ -24,7 +24,7 @@ namespace UnityEngine.ScriptableObjectWizard {
 										where !t.GetCustomAttributes( inherit:false ).OfType<HideInWizardAttribute>().Any()
 										select t).ToArray();
 
-			// Show the selection window.
+			// Show the selection screen.
 			var window = EditorWindow.GetWindow<ScriptableObjectWindow>(true, "Create a new ScriptableObject", true);
 			window.ShowPopup();
 

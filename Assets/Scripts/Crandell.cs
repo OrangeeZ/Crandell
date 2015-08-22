@@ -12,36 +12,42 @@ public class Crandell : MonoBehaviour {
     public UIJoystick moveJoystick;
     public UIJoystick attackJoystick;
 
-    private Planet planet;
+    public PlanetSurfaceTransform planetTransform;
+
+    private Planet _planet;
 
     private void Start() {
 
-        planet = FindObjectOfType<Planet>();
+        _planet = FindObjectOfType<Planet>();
+        planetTransform = new PlanetSurfaceTransform( _planet );
     }
 
     private void Update() {
-        
-        if ( attackJoystick.GetValue().sqrMagnitude > .1f ) {
-            
-            Instantiate( projectile ).Launch( transform, attackJoystick.GetValue() );
-        }
 
-        transform.position += planet.GetGravity( transform.position ) * Time.deltaTime;
+        //if ( attackJoystick.GetValue().sqrMagnitude > .1f ) {
 
-        var distance = ( transform.position - planet.transform.position ).magnitude;
+        //    Instantiate( projectile ).Launch( transform, attackJoystick.GetValue() );
+        //}
 
-        var circleLength = 2f * Mathf.PI * distance;
-        var angularMoveSpeed = moveSpeed / circleLength;
-        angularMoveSpeed = angularMoveSpeed * 360f;
+        planetTransform.Move( transform, new Vector2( Input.GetAxis( "Horizontal" ), Input.GetAxis( "Vertical" ) ), moveSpeed * Time.deltaTime );
+        //planetTransform.UpdateTransform( transform );
 
-        var zAngle = Input.GetAxis( "Vertical" ) * Time.deltaTime * angularMoveSpeed;
-        var xAngle = -Input.GetAxis( "Horizontal" ) * Time.deltaTime * angularMoveSpeed;
+        //transform.position += planet.GetGravity( transform.position ) * Time.deltaTime;
 
-        transform.rotation *= Quaternion.AngleAxis( zAngle, Vector3.right ) *
-                              Quaternion.AngleAxis( xAngle, Vector3.forward );
+        //var distance = ( transform.position - planet.transform.position ).magnitude;
 
-        distance = distance.Clamped( planet.radius, Mathf.Infinity );
-        transform.position = transform.rotation * Vector3.up * distance;
+        //var circleLength = 2f * Mathf.PI * distance;
+        //var angularMoveSpeed = moveSpeed / circleLength;
+        //angularMoveSpeed = angularMoveSpeed * 360f;
+
+        //var zAngle = Input.GetAxis( "Vertical" ) * Time.deltaTime * angularMoveSpeed;
+        //var xAngle = -Input.GetAxis( "Horizontal" ) * Time.deltaTime * angularMoveSpeed;
+
+        //transform.rotation *= Quaternion.AngleAxis( zAngle, Vector3.right ) *
+        //                      Quaternion.AngleAxis( xAngle, Vector3.forward );
+
+        //distance = distance.Clamped( planet.radius, Mathf.Infinity );
+        //transform.position = transform.rotation * Vector3.up * distance;
     }
 
     private void OnDrawGizmos() {

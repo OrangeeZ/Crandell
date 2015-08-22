@@ -19,7 +19,7 @@ namespace UnityEngine.ScriptableObjectWizard {
 	}
 
 	/// <summary>
-	/// Scriptable object window.
+	/// Scriptable object screen.
 	/// </summary>
 	public class ScriptableObjectWindow : EditorWindow
 	{

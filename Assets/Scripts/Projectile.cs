@@ -8,15 +8,18 @@ public class Projectile : MonoBehaviour {
 
     public float lifetime = 3f;
 
-    private Planet planet;
-
     private AutoTimer timer;
 
-    private Vector3 direction;
+    private Vector3 _direction;
+
+    private PlanetSurfaceTransform _planetTransform;
+    private Character _owner;
 
     private void Awake() {
 
-        planet = FindObjectOfType<Planet>();
+        var planet = FindObjectOfType<Planet>();
+
+        _planetTransform = new PlanetSurfaceTransform( planet );
 
         timer = new AutoTimer( lifetime );
 
@@ -30,42 +33,33 @@ public class Projectile : MonoBehaviour {
             Destroy( gameObject );
         }
 
-        var distance = ( transform.position - planet.transform.position ).magnitude;
-
-        var circleLength = 2f * Mathf.PI * distance;
-        var angularMoveSpeed = speed / circleLength;
-        angularMoveSpeed = angularMoveSpeed * 360f;
-
-        var zAngle = direction.z * Time.deltaTime * angularMoveSpeed;
-        var xAngle = direction.x * Time.deltaTime * angularMoveSpeed;
-
-        //transform.position += direction * speed * Time.deltaTime;
-
-        transform.rotation *= Quaternion.AngleAxis( zAngle, Vector3.right ) *
-                              Quaternion.AngleAxis( -xAngle, Vector3.forward );
-
-        distance = distance.Clamped( planet.radius, Mathf.Infinity );
-        transform.position = transform.rotation * Vector3.up * distance;
+        _planetTransform.Move( transform, _direction, speed * Time.deltaTime );
     }
 
-    public void Launch( Transform sourceTransform, Vector3 direction ) {
+    public void Launch( Character owner, Vector3 direction ) {
 
-        transform.position = sourceTransform.position;
-        transform.rotation = sourceTransform.rotation;
+        _owner = owner;
 
-        this.direction = direction.normalized;
+        _planetTransform.SetHeight( owner.pawn.planetTransform.height );
+
+        transform.position = _owner.pawn.position;
+        transform.rotation = _owner.pawn.rotation;
+
+        _direction = direction;
 
         enabled = true;
     }
 
     private void OnTriggerEnter( Collider other ) {
 
-        var otherCharacter = other.GetComponent<Crandell>();
+        var otherPawn = other.GetComponent<CharacterPlanetPawn>();
 
-        //if ( otherCharacter != null ) {
+        if ( otherPawn != null && otherPawn != _owner.pawn && otherPawn.character.teamId != _owner.teamId ) {
 
-        //    Destroy( gameObject );
-        //}
+            otherPawn.character.health.Value -= 1;
+
+            Destroy( gameObject );
+        }
     }
 
 }
