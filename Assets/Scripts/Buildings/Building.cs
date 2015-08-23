@@ -4,23 +4,33 @@ using System.Collections.Generic;
 
 public class Building : MonoBehaviour {
 
-    public static List<Building> instances  = new List<Building>();
+    public static List<Building> instances = new List<Building>();
 
     public int health = 5;
 
     public SimpleSphereCollider sphereCollider;
 
-    void Start() {
-        
+    public EffectsBase[] effects;
+
+    private void Start() {
+
         instances.Add( this );
     }
 
-    void OnDestroy() {
+    private void OnDestroy() {
 
         instances.Remove( this );
     }
 
     public virtual void Hit( Projectile projectile ) {
+
+        for ( var i = health - projectile.damage; i <= health; i++ ) {
+
+            if ( i >= 0 && i < effects.Length ) {
+
+                effects[i].Activate();
+            }
+        }
 
         health -= projectile.damage;
 
@@ -32,7 +42,8 @@ public class Building : MonoBehaviour {
 
     public virtual void Destroy() {
 
-        Destroy( gameObject );
+        GetComponent<Collider>().enabled = false;
+        //Destroy( gameObject );
     }
 
 }

@@ -24,7 +24,14 @@
 		void surf (Input IN, inout SurfaceOutputStandard o) {
 			// Albedo comes from a texture tinted by color
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-			o.Albedo = c.rgb * IN.color;
+						
+			half gloss = IN.color.r == 0 && IN.color.g == 0 && IN.color.b == 0 ? 0.8 : 0;
+
+			o.Albedo = c.rgb * IN.color + gloss;
+
+			o.Metallic = gloss;
+			o.Smoothness = gloss;
+
 			o.Alpha = c.a;
 		}
 		ENDCG
