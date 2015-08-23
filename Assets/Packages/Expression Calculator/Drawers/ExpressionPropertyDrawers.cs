@@ -21,8 +21,6 @@ namespace Expressions {
 
         public override void OnGUI( Rect rect, SerializedProperty property, GUIContent label ) {
 
-            property.serializedObject.Update();
-
             var calculator = new Calculator();
 
             var result = 0d;
