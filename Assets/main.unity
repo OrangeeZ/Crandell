@@ -458,7 +458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: bcf12e17578bf7747b1f4ccf511fbd3c, type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: dc529bdfa16ebd646b558a3f02668d3d, type: 2}
+  startingWeapon: {fileID: 11400000, guid: b9ff1317c702d834a9dab33c1c63d97c, type: 2}
   cameraBehaviour: {fileID: 0}
 --- !u!4 &512859952
 Transform:
@@ -487,7 +487,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &606239037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,7 +716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &751528908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1016,7 +1016,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1578565190
 MonoBehaviour:
   m_ObjectHideFlags: 0
