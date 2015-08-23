@@ -16,7 +16,7 @@ MonoBehaviour:
   inventoryIcon: {fileID: 0}
   baseDamage: 1
   baseAttackSpeed: 1
-  attackRange: 20
+  attackRange: 10
   slotType: 0
   _damageExpression:
     value: 1

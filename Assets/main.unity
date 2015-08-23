@@ -500,7 +500,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: bcf12e17578bf7747b1f4ccf511fbd3c, type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: b9ff1317c702d834a9dab33c1c63d97c, type: 2}
+  startingWeapon: {fileID: 11400000, guid: 4ce7b04c8c02549b6abda7a262bc6847, type: 2}
   cameraBehaviour: {fileID: 0}
 --- !u!4 &512859952
 Transform:
@@ -543,7 +543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 7fdecf6ada2dc1a478c471354ca58167, type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: dc529bdfa16ebd646b558a3f02668d3d, type: 2}
+  startingWeapon: {fileID: 11400000, guid: 9e0148989e31d4a9a9beb09789d007c2, type: 2}
   cameraBehaviour: {fileID: 0}
 --- !u!4 &606239038
 Transform:
@@ -775,7 +775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 7fdecf6ada2dc1a478c471354ca58167, type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: dc529bdfa16ebd646b558a3f02668d3d, type: 2}
+  startingWeapon: {fileID: 11400000, guid: 9e0148989e31d4a9a9beb09789d007c2, type: 2}
   cameraBehaviour: {fileID: 0}
 --- !u!4 &751528909
 Transform:
@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 7fdecf6ada2dc1a478c471354ca58167, type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: dc529bdfa16ebd646b558a3f02668d3d, type: 2}
+  startingWeapon: {fileID: 11400000, guid: 9e0148989e31d4a9a9beb09789d007c2, type: 2}
   cameraBehaviour: {fileID: 0}
 --- !u!4 &1578565191
 Transform:
