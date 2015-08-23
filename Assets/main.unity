@@ -479,7 +479,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 512859952}
-  - 114: {fileID: 512859951}
   - 114: {fileID: 512859953}
   m_Layer: 0
   m_Name: Enemy Spawner
@@ -488,21 +487,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &512859951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 512859950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63908c39a32534045a55dc5f49a5cfe6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterInfo: {fileID: 11400000, guid: bcf12e17578bf7747b1f4ccf511fbd3c, type: 2}
-  startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 4ce7b04c8c02549b6abda7a262bc6847, type: 2}
-  cameraBehaviour: {fileID: 0}
 --- !u!4 &512859952
 Transform:
   m_ObjectHideFlags: 0
