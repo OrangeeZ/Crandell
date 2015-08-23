@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 197418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.80558395, y: 8.51303005, z: -1.80190015}
-  m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
+  m_LocalScale: {x: .400000006, y: .400000006, z: .400000006}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: .200000003
+  weight: 1
   childProjectiles:
   - {fileID: 11485336, guid: 0279e86c0ddf9454ba983488188b970e, type: 2}
   - {fileID: 11485336, guid: 0279e86c0ddf9454ba983488188b970e, type: 2}
@@ -82,6 +83,7 @@ MonoBehaviour:
   - {fileID: 11485336, guid: 0279e86c0ddf9454ba983488188b970e, type: 2}
   - {fileID: 11485336, guid: 0279e86c0ddf9454ba983488188b970e, type: 2}
   maxDisplacement: .100000001
+  damageScale: 1
 --- !u!135 &13566852
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -120,6 +122,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_ReflectionProbeUsage
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: .400000006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
