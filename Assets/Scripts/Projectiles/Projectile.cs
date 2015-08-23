@@ -1,12 +1,15 @@
 ﻿using UniRx.Triggers;
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class Projectile : MonoBehaviour {
 
     public float lifetime = 3f;
 
     public int damage { get; protected set; }
+
+    public float weight = 1f;
 
     private AutoTimer timer;
 
@@ -30,7 +33,11 @@ public class Projectile : MonoBehaviour {
             OnLifetimeExpire();
         }
 
-        _planetTransform.Move( transform, direction, speed * Time.deltaTime );
+        var attractionVector = ForceZone.instances.Select( _ => _.GetForceVector( transform.position ) ).Aggregate( Vector3.zero, ( current, each ) => current + each );
+        attractionVector = Quaternion.Inverse( transform.rotation ) * attractionVector;
+
+        _planetTransform.Move( transform, direction + attractionVector, speed * Time.deltaTime );
+        _planetTransform.SetHeight( _planetTransform.height - weight * Time.deltaTime );
     }
 
     public void Launch( Character owner, Vector3 direction, float speed, int damage ) {
