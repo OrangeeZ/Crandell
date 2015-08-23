@@ -7,6 +7,8 @@ public class CharacterPlanetPawn : CharacterPawn {
 
     public bool canFollowDestination;
 
+    public GameObject turret;
+    
     [SerializeField]
     private float _startingHeight = 5;
 

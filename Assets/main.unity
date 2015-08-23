@@ -390,19 +390,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f84b1422aa8df2540b97eff8b36d8447, type: 3}
       propertyPath: m_LocalScale.x
-      value: 49
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f84b1422aa8df2540b97eff8b36d8447, type: 3}
       propertyPath: m_LocalScale.y
-      value: 49
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f84b1422aa8df2540b97eff8b36d8447, type: 3}
       propertyPath: m_LocalScale.z
-      value: 49
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: f84b1422aa8df2540b97eff8b36d8447, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f84b1422aa8df2540b97eff8b36d8447, type: 3}
@@ -429,6 +429,7 @@ MonoBehaviour:
   prefabs:
   - {fileID: 164682, guid: 2f093147aa87e904980c783ffdec134c, type: 2}
   - {fileID: 171880, guid: 05c6fe359a4348d478695717ab315ab1, type: 2}
+  - {fileID: 118706, guid: c287870581038604492894cc1a18a0f6, type: 2}
 --- !u!1 &512859950
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,7 +488,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &606239037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,7 +717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &751528908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1016,7 +1017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1578565190
 MonoBehaviour:
   m_ObjectHideFlags: 0

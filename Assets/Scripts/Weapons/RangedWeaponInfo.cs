@@ -32,9 +32,16 @@ public class RangedWeaponInfo : WeaponInfo {
             }
 
             var projectile = Instantiate( typedInfo._projectilePrefab );
-            projectile.Launch( character, character.pawn.planetTransform.GetDirectionTo( target.pawn.planetTransform ), typedInfo._projectileSpeed, typedInfo.baseDamage );
+            var targetDirection = character.pawn.planetTransform.GetDirectionTo( target.pawn.planetTransform );
+
+            projectile.Launch( character, targetDirection, typedInfo._projectileSpeed, typedInfo.baseDamage );
 
             //target.health.Value -= typedInfo.baseDamage;
+
+            if ( character.pawn.turret != null ) {
+
+                character.pawn.turret.transform.localRotation = Quaternion.FromToRotation( Vector3.forward, targetDirection );
+            }
 
             nextAttackTime = Time.timeSinceLevelLoad + typedInfo.baseAttackSpeed;
         }
