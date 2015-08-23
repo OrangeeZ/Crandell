@@ -7,6 +7,8 @@ public class ShrapnelProjectile : Projectile {
 
     public float maxDisplacement = 0.1f;
 
+    public float damageScale = 1f;
+
     public override void OnHit() {
 
         base.OnHit();
@@ -15,7 +17,7 @@ public class ShrapnelProjectile : Projectile {
 
             var instance = Instantiate( each );
 
-            instance.Launch( owner, direction + transform.rotation * Random.insideUnitCircle.normalized.ToXZ() * maxDisplacement, speed );
+            instance.Launch( owner, direction + transform.rotation * Random.insideUnitCircle.normalized.ToXZ() * maxDisplacement, speed, ( damage * damageScale ).CeilToInt() );
 
             instance.transform.position = transform.position;
             instance.transform.rotation = transform.rotation;

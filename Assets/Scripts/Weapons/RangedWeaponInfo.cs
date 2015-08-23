@@ -32,7 +32,7 @@ public class RangedWeaponInfo : WeaponInfo {
             }
 
             var projectile = Instantiate( typedInfo._projectilePrefab );
-            projectile.Launch( character, character.pawn.planetTransform.GetDirectionTo( target.pawn.planetTransform ), typedInfo._projectileSpeed );
+            projectile.Launch( character, character.pawn.planetTransform.GetDirectionTo( target.pawn.planetTransform ), typedInfo._projectileSpeed, typedInfo.baseDamage );
 
             //target.health.Value -= typedInfo.baseDamage;
 
@@ -52,7 +52,7 @@ public class RangedWeaponInfo : WeaponInfo {
             }
 
             var projectile = Instantiate( typedInfo._projectilePrefab );
-            projectile.Launch( character, direction, typedInfo._projectileSpeed );
+            projectile.Launch( character, direction, typedInfo._projectileSpeed, typedInfo.baseDamage);
 
             //target.health.Value -= typedInfo.baseDamage;
 

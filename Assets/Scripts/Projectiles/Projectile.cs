@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour {
 
     public float lifetime = 3f;
 
+    public int damage { get; protected set; }
+
     private AutoTimer timer;
 
     private PlanetSurfaceTransform _planetTransform;
@@ -31,11 +33,12 @@ public class Projectile : MonoBehaviour {
         _planetTransform.Move( transform, direction, speed * Time.deltaTime );
     }
 
-    public void Launch( Character owner, Vector3 direction, float speed ) {
+    public void Launch( Character owner, Vector3 direction, float speed, int damage ) {
 
         this.owner = owner;
         this.speed = speed;
         this.direction = direction;
+        this.damage = damage;
 
         _planetTransform = new PlanetSurfaceTransform( Planet.instance );
         _planetTransform.SetHeight( owner.pawn.planetTransform.height );
@@ -65,6 +68,17 @@ public class Projectile : MonoBehaviour {
         if ( otherPawn != null && otherPawn != owner.pawn && otherPawn.character.teamId != owner.teamId ) {
 
             otherPawn.character.health.Value -= 1;
+
+            OnHit();
+
+            return;
+        }
+
+        var otherBuilding = other.GetComponent<Building>();
+
+        if ( otherBuilding != null ) {
+
+            otherBuilding.Hit( this );
 
             OnHit();
         }
