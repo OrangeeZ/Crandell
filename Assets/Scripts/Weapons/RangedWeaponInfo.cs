@@ -23,11 +23,26 @@ public class RangedWeaponInfo : WeaponInfo {
     [SerializeField]
     private float _reloadDuration;
 
-    private class RangedWeapon : Weapon<RangedWeaponInfo> {
+    public class RangedWeapon : Weapon<RangedWeaponInfo> {
+
+        public bool isReloading {
+            get {
+
+                if ( _isReloading && Time.timeSinceLevelLoad > _nextAttackTime ) {
+
+                    _isReloading = false;
+                }
+
+                return _isReloading;
+            }
+            private set { _isReloading = value; }
+        }
+
+        public int _ammoInClip { get; private set; }
 
         private float _nextAttackTime;
-        private int _ammoInClip;
         private readonly ReactiveCalculator _damageCalculator;
+        private bool _isReloading;
 
         public RangedWeapon( RangedWeaponInfo info ) : base( info ) {
 
@@ -42,6 +57,8 @@ public class RangedWeaponInfo : WeaponInfo {
 
                 return;
             }
+
+            isReloading = false;
 
             if ( attackCallback != null ) {
 
@@ -64,6 +81,8 @@ public class RangedWeaponInfo : WeaponInfo {
 
                 return;
             }
+
+            isReloading = false;
 
             if ( attackCallback != null ) {
 
@@ -90,6 +109,8 @@ public class RangedWeaponInfo : WeaponInfo {
                 _ammoInClip = typedInfo._clipSize;
 
                 _nextAttackTime = Time.timeSinceLevelLoad + typedInfo._reloadDuration;
+
+                isReloading = true;
             } else {
 
                 _nextAttackTime = Time.timeSinceLevelLoad + typedInfo.baseAttackSpeed;

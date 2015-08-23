@@ -64,11 +64,6 @@ public class Character {
     public void ApproachAndInteract( Vector3 target ) {
     }
 
-    private void OnHealthChange( int value ) {
-
-        pawn.Log( value );
-    }
-
     private void UpdatePawnSpeed( float speed ) {
 
         pawn.SetSpeed( speed );

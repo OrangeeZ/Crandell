@@ -4,45 +4,53 @@ using UnityEngine;
 
 public class CharacterSpawner : MonoBehaviour {
 
-	public Action<Character> Spawned;
+    public Action<Character> Spawned;
 
-	public CharacterInfo characterInfo;
+    public CharacterInfo characterInfo;
 
-	public ItemInfo[] startingItems;
+    public ItemInfo[] startingItems;
 
-	public WeaponInfo startingWeapon;
+    public WeaponInfo startingWeapon;
 
-	public CameraBehaviour cameraBehaviour;
+    public CameraBehaviour cameraBehaviour;
 
-	private Character character;
+    public bool isPlayerCharacter = false;
 
-	private void Start() {
+    private Character character;
 
-		character = characterInfo.GetCharacter( startingPosition: transform.position );
+    private void Start() {
 
-		foreach ( var each in startingItems.Select( _ => _.GetItem() ) ) {
+        character = characterInfo.GetCharacter( startingPosition: transform.position );
 
-			character.inventory.AddItem( each );
-		}
+        foreach ( var each in startingItems.Select( _ => _.GetItem() ) ) {
 
-		if ( startingWeapon != null ) {
+            character.inventory.AddItem( each );
+        }
 
-			var weapon = startingWeapon.GetItem();
+        if ( startingWeapon != null ) {
 
-			character.inventory.AddItem( weapon );
-			weapon.Apply();
-		}
+            var weapon = startingWeapon.GetItem();
 
-		if ( cameraBehaviour != null ) {
+            character.inventory.AddItem( weapon );
+            weapon.Apply();
+        }
 
-			var cameraBehaviourInstance = Instantiate( cameraBehaviour );
-			cameraBehaviourInstance.transform.position = transform.position;
-			cameraBehaviourInstance.SetTarget( character.pawn );
-		}
+        if ( cameraBehaviour != null ) {
 
-		if ( Spawned != null ) {
+            var cameraBehaviourInstance = Instantiate( cameraBehaviour );
+            cameraBehaviourInstance.transform.position = transform.position;
+            cameraBehaviourInstance.SetTarget( character.pawn );
+        }
 
-			Spawned( character );
-		}
-	}
+        if ( isPlayerCharacter ) {
+
+            GameScreen.instance.statsPanel.SetCharacter( character );
+        }
+
+        if ( Spawned != null ) {
+
+            Spawned( character );
+        }
+    }
+
 }

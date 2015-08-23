@@ -8,6 +8,8 @@ public class GameScreen : UIScreen {
     public UIJoystick moveJoystick;
     public UIJoystick attackJoystick;
 
+    public StatsPanel statsPanel;
+
     void Awake() {
 
         instance = this;
