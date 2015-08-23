@@ -9,6 +9,11 @@ public static class VectorExtensions {
         return new Vector2( self.x, self.z );
     }
 
+    public static Vector3 ToXZ( this Vector2 self ) {
+
+        return new Vector3( self.x, 0, self.y );
+    }
+
     public static Vector3 Set( this Vector3 self, float x = float.NaN, float y = float.NaN, float z = float.NaN ) {
 
         self.x = x.IsNan() ? self.x : x;

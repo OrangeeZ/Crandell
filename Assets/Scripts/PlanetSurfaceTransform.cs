@@ -24,7 +24,7 @@ public class PlanetSurfaceTransform {
 
         var zAngle = direction.z * angularMoveSpeed;
         var xAngle = -direction.x * angularMoveSpeed;
-        
+
         transform.rotation *= Quaternion.AngleAxis( zAngle, Vector3.right ) *
                               Quaternion.AngleAxis( xAngle, Vector3.forward );
 
@@ -44,7 +44,7 @@ public class PlanetSurfaceTransform {
 
         var result = Quaternion.Inverse( _rotation ) * relativePosition;
         result.y = ( otherTransform.height ) - height;
-        //result.y = ( ( destination - _planet.transform.position ).magnitude - _planet.radius ) - height;
+        //result.y = ( ( destination - _planet.transform.transform ).magnitude - _planet.radius ) - height;
 
         return result.normalized;
 
@@ -93,8 +93,8 @@ public class PlanetSurfaceTransform {
 
     public float GetDistanceTo( Vector3 destination ) {
 
-        var result = Vector3.Angle((Quaternion.FromToRotation(Vector3.up, (destination - _planet.transform.position))) * Vector3.up * _planet.radius, _rotation * Vector3.up * (_planet.radius)) * Mathf.Deg2Rad * _planet.radius;
-        //var localRotation = Quaternion.Inverse( _rotation ) * Quaternion.FromToRotation( Vector3.up, ( destination - _planet.transform.position ) );
+        var result = Vector3.Angle( ( Quaternion.FromToRotation( Vector3.up, ( destination - _planet.transform.position ) ) ) * Vector3.up * _planet.radius, _rotation * Vector3.up * ( _planet.radius ) ) * Mathf.Deg2Rad * _planet.radius;
+        //var localRotation = Quaternion.Inverse( _rotation ) * Quaternion.FromToRotation( Vector3.up, ( destination - _planet.transform.transform ) );
         //var angle = Quaternion.Angle( Quaternion.identity, localRotation ) * Mathf.Deg2Rad;
 
         return result;
@@ -105,6 +105,14 @@ public class PlanetSurfaceTransform {
     public void SetHeight( float height ) {
 
         this.height = height;
+    }
+
+    public void SetPosition( Transform transform ) {
+
+        _rotation = Quaternion.FromToRotation( Vector3.up, transform.position );
+
+        transform.rotation = _rotation;
+        transform.position = _rotation * Vector3.up * ( _planet.radius + height );
     }
 
 }

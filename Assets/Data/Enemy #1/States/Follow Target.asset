@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Follow Target
   m_EditorClassIdentifier: 
   animatorStateName: 
-  minRange: 5
+  minRange: 2
   maxRange: 50
   autoActivate: 1
   clearTargetOnReach: 1

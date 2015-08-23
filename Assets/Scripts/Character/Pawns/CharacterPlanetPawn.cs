@@ -16,6 +16,8 @@ public class CharacterPlanetPawn : CharacterPawn {
         planetTransform = new PlanetSurfaceTransform( Planet.instance );
 
         planetTransform.SetHeight( _startingHeight );
+
+        planetTransform.SetPosition( transform );
     }
 
     private void Update() {
