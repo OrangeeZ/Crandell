@@ -46,7 +46,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170142}
-  m_LocalRotation: {x: 0, y: -.707107008, z: 0, w: .70710665}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 12.6389999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -59,7 +59,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163692}
-  m_LocalRotation: {x: .707105994, y: 1.0127237e-07, z: -4.74738187e-07, w: .707107604}
+  m_LocalRotation: {x: .500000477, y: -.499999851, z: .499998569, w: .500001073}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2.09999967, z: 1}
   m_Children: []
@@ -156,8 +156,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensor: {fileID: 11485918}
   animatedViewPrefab: {fileID: 0}
-  _startingHeight: 0
   canFollowDestination: 0
+  _startingHeight: 0
+  _rotationToDirectionSpeed: 100
 --- !u!114 &11475928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -248,6 +249,10 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: 422ae825adb261043b9bbef4afe4f195, type: 3}
+    - target: {fileID: 0}
+      propertyPath: _rotationToDirectionSpeed
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 170142}

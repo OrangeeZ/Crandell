@@ -5,11 +5,15 @@ public class CharacterPlanetPawn : CharacterPawn {
 
     public PlanetSurfaceTransform planetTransform;
 
+    public bool canFollowDestination;
+
     [SerializeField]
     private float _startingHeight = 5;
 
+    [SerializeField]
+    private float _rotationToDirectionSpeed = 100;
+
     private Vector3? _destination;
-    public bool canFollowDestination;
 
     protected override void Start() {
 
@@ -26,7 +30,15 @@ public class CharacterPlanetPawn : CharacterPawn {
 
             var direction = planetTransform.GetDirectionTo( _destination.Value );
 
-            planetTransform.Move( transform, direction.Set( y: 0 ).normalized, speed * Time.deltaTime );
+            planetTransform.Move( transform, Vector3.forward, speed * Time.deltaTime );
+
+            Debug.DrawRay( transform.position, planetTransform.rotation * Vector3.forward );
+            Debug.DrawRay( transform.position, transform.rotation * direction.Set( y: 0 ).normalized );
+
+            transform.rotation = Quaternion.RotateTowards( transform.rotation, transform.rotation * Quaternion.FromToRotation( Vector3.forward, direction.Set( y: 0 ) ), _rotationToDirectionSpeed * Time.deltaTime );
+
+            //transform.rotation *= Quaternion.RotateTowards( transform.rotation, transform.rotation * Quaternion.FromToRotation( Vector3.forward, direction.Set( y: 0 ).normalized ), _rotationToDirectionSpeed * Time.deltaTime );
+            //transform.rotation *= Quaternion.AngleAxis( _rotationToDirectionSpeed * Time.deltaTime, Vector3.up );
         }
     }
 

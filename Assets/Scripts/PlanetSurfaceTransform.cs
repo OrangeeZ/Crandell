@@ -5,7 +5,7 @@ public class PlanetSurfaceTransform {
 
     public float height { get; private set; }
 
-    private Quaternion _rotation = Quaternion.identity;
+    public Quaternion rotation = Quaternion.identity;
 
     private readonly Planet _planet;
 
@@ -28,7 +28,7 @@ public class PlanetSurfaceTransform {
         transform.rotation *= Quaternion.AngleAxis( zAngle, Vector3.right ) *
                               Quaternion.AngleAxis( xAngle, Vector3.forward );
 
-        _rotation = transform.rotation;
+        rotation = transform.rotation;
 
         height += direction.y * speed;
 
@@ -37,18 +37,18 @@ public class PlanetSurfaceTransform {
 
     public Vector3 GetDirectionTo( PlanetSurfaceTransform otherTransform ) {
 
-        var relativePosition = ( otherTransform._rotation ) * Vector3.up * _planet.radius - _rotation * Vector3.up * ( _planet.radius );
-        var relativeRotation = otherTransform._rotation * Quaternion.Inverse( _rotation );
+        var relativePosition = ( otherTransform.rotation ) * Vector3.up * _planet.radius - rotation * Vector3.up * ( _planet.radius );
+        var relativeRotation = otherTransform.rotation * Quaternion.Inverse( rotation );
 
         //var result = new Vector3( relativeRotation.eulerAngles.z, 0, relativeRotation.eulerAngles.y );
 
-        var result = Quaternion.Inverse( _rotation ) * relativePosition;
+        var result = Quaternion.Inverse( rotation ) * relativePosition;
         result.y = ( otherTransform.height ) - height;
         //result.y = ( ( destination - _planet.transform.transform ).magnitude - _planet.radius ) - height;
 
         return result.normalized;
 
-        //var result = Quaternion.Inverse( _rotation ) * ( otherTransform._rotation ) * Vector3.up;
+        //var result = Quaternion.Inverse( rotation ) * ( otherTransform.rotation ) * Vector3.up;
 
         //result.y = otherTransform.height - height;
 
@@ -57,10 +57,10 @@ public class PlanetSurfaceTransform {
 
     public Vector3 GetDirectionTo( Vector3 destination ) {
 
-        var relativePosition = ( Quaternion.FromToRotation( Vector3.up, ( destination - _planet.transform.position ) ) ) * Vector3.up * _planet.radius - _rotation * Vector3.up * ( _planet.radius );
+        var relativePosition = ( Quaternion.FromToRotation( Vector3.up, ( destination - _planet.transform.position ) ) ) * Vector3.up * _planet.radius - rotation * Vector3.up * ( _planet.radius );
 
-        //Debug.DrawLine( _rotation * Vector3.up * ( _planet.radius + height ), _rotation * Vector3.up * ( _planet.radius + height ) + relativePosition );
-        //Debug.DrawRay(_rotation * Vector3.up * (_planet.radius + height), relativeRotation.eulerAngles);
+        //Debug.DrawLine( rotation * Vector3.up * ( _planet.radius + height ), rotation * Vector3.up * ( _planet.radius + height ) + relativePosition );
+        //Debug.DrawRay(rotation * Vector3.up * (_planet.radius + height), relativeRotation.eulerAngles);
 
         //var result = new Vector3( relativeRotation.eulerAngles.x - 180f, 0, relativeRotation.eulerAngles.y - 180f );
 
@@ -69,12 +69,12 @@ public class PlanetSurfaceTransform {
         //result.z = relativePosition.z;
         //result.z = Vector3.Angle(  );
 
-        var result = Quaternion.Inverse( _rotation ) * relativePosition;
+        var result = Quaternion.Inverse( rotation ) * relativePosition;
 
-        //Debug.DrawLine( _rotation * Vector3.up * ( _planet.radius + height ), relativeRotation * Vector3.forward );
+        //Debug.DrawLine( rotation * Vector3.up * ( _planet.radius + height ), relativeRotation * Vector3.forward );
 
-        //Debug.DrawLine( _rotation * Vector3.up * ( _planet.radius + height ), ( relativeRotation ) * Vector3.up * ( _planet.radius + height ) );
-        //Debug.DrawLine( _rotation * Vector3.up * ( _planet.radius + height ), destination );
+        //Debug.DrawLine( rotation * Vector3.up * ( _planet.radius + height ), ( relativeRotation ) * Vector3.up * ( _planet.radius + height ) );
+        //Debug.DrawLine( rotation * Vector3.up * ( _planet.radius + height ), destination );
 
         result.y = ( ( destination - _planet.transform.position ).magnitude - _planet.radius ) - height;
 
@@ -93,8 +93,8 @@ public class PlanetSurfaceTransform {
 
     public float GetDistanceTo( Vector3 destination ) {
 
-        var result = Vector3.Angle( ( Quaternion.FromToRotation( Vector3.up, ( destination - _planet.transform.position ) ) ) * Vector3.up * _planet.radius, _rotation * Vector3.up * ( _planet.radius ) ) * Mathf.Deg2Rad * _planet.radius;
-        //var localRotation = Quaternion.Inverse( _rotation ) * Quaternion.FromToRotation( Vector3.up, ( destination - _planet.transform.transform ) );
+        var result = Vector3.Angle( ( Quaternion.FromToRotation( Vector3.up, ( destination - _planet.transform.position ) ) ) * Vector3.up * _planet.radius, rotation * Vector3.up * ( _planet.radius ) ) * Mathf.Deg2Rad * _planet.radius;
+        //var localRotation = Quaternion.Inverse( rotation ) * Quaternion.FromToRotation( Vector3.up, ( destination - _planet.transform.transform ) );
         //var angle = Quaternion.Angle( Quaternion.identity, localRotation ) * Mathf.Deg2Rad;
 
         return result;
@@ -109,10 +109,10 @@ public class PlanetSurfaceTransform {
 
     public void SetPosition( Transform transform ) {
 
-        _rotation = Quaternion.FromToRotation( Vector3.up, transform.position );
+        rotation = Quaternion.FromToRotation( Vector3.up, transform.position );
 
-        transform.rotation = _rotation;
-        transform.position = _rotation * Vector3.up * ( _planet.radius + height );
+        transform.rotation = rotation;
+        transform.position = rotation * Vector3.up * ( _planet.radius + height );
     }
 
 }

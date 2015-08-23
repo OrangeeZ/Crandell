@@ -13,6 +13,7 @@ public static class TargetSelector {
             .Where( _ => _.direction >= 0.85f )
             .ToList();
 
+        characterToDirectionMap.Sort( ( a, b ) => ( b.character.pawn.position - currentCharacter.pawn.position ).magnitude.CompareTo( ( a.character.pawn.position - currentCharacter.pawn.position ).magnitude ) );
         characterToDirectionMap.Sort( ( a, b ) => a.direction.CompareTo( b.direction ) );
 
         return characterToDirectionMap.Any() ? characterToDirectionMap.First().character : null;

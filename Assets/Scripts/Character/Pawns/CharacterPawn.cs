@@ -8,7 +8,7 @@ public class CharacterPawn : AObject {
     
 	[SerializeField]
 	private SphereSensor sensor;
-
+    
 	[SerializeField]
 	private CharacterComplexAnimationController animatedViewPrefab;
 
