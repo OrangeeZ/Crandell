@@ -1,123 +1,124 @@
 ﻿using System;
 using System.Collections.Generic;
-using Expressions;
 using UniRx;
 using UnityEngine;
 
 namespace Expressions {
 
-	[Serializable]
-	public class ReactiveCalculator : IObservable<double> {
+    [Serializable]
+    public class ReactiveCalculator : IObservable<double> {
 
-		public double this[string key] {
+        public double this[ string key ] {
+            set {
 
-			set {
+                var lowercaseKey = key.ToLower();
 
-				var oldValue = calculator.GetVariable( key );
+                var oldValue = _calculator.GetVariable( lowercaseKey );
 
-				if ( oldValue != value ) {
+                if ( oldValue != value ) {
 
-					calculator.SetVariable( key, value );
+                    _calculator.SetVariable( lowercaseKey, value );
 
-					Recalculate();
-				}
-			}
-		}
+                    Recalculate();
+                }
+            }
+        }
 
-		public string Expression {
+        public string Expression {
+            get { return _expression; }
+            set {
 
-			get { return _expression; }
-			set {
+                if ( _expression != value ) {
 
-				if ( _expression != value ) {
+                    _expression = value;
 
-					_expression = value;
+                    Recalculate();
+                }
+            }
+        }
 
-					Recalculate();
-				}
-			}
-		}
+        public bool IsValid {
+            get { return _isValid; }
+            private set { _isValid = value; }
+        }
 
-		public bool IsValid {
+        public DoubleReactiveProperty Result = new DoubleReactiveProperty( 0 );
 
-			get { return _isValid; }
-			private set { _isValid = value; }
-		}
+        private readonly Calculator _calculator = new Calculator();
 
-		public DoubleReactiveProperty Result = new DoubleReactiveProperty( 0 );
+        private Dictionary<string, IDisposable> _subscriptions = new Dictionary<string, IDisposable>();
 
-		private Calculator calculator = new Calculator();
+        [SerializeField, HideInInspector]
+        private string _expression;
 
-		private Dictionary<string, IDisposable> subscriptions = new Dictionary<string, IDisposable>();
+        [SerializeField, HideInInspector]
+        private bool _isValid;
 
-		[SerializeField, HideInInspector]
-		private string _expression;
+        public ReactiveCalculator( IReactiveProperty<string> expression ) {
 
-		[SerializeField, HideInInspector]
-		private bool _isValid;
+            _subscriptions["Expression"] = expression.Subscribe( _ => Expression = _ );
+        }
 
-		public ReactiveCalculator( IReactiveProperty<string> expression ) {
+        ~ReactiveCalculator() {
 
-			subscriptions["Expression"] = expression.Subscribe( _ => Expression = _ );
-		}
+            foreach ( var each in _subscriptions.Values ) {
 
-		~ReactiveCalculator() {
+                each.Dispose();
+            }
 
-			foreach ( var each in subscriptions.Values ) {
+            _subscriptions = null;
+        }
 
-				each.Dispose();
-			}
+        public void SetExpression( string newExpression ) {
 
-			subscriptions = null;
-		}
+            if ( _expression != newExpression ) {
 
-		public void SetExpression( string newExpression ) {
+                _expression = newExpression;
 
-			if ( _expression != newExpression ) {
+                Recalculate();
+            }
+        }
 
-				_expression = newExpression;
+        public void SubscribeProperty( string name, IReactiveProperty<double> property ) {
 
-				Recalculate();
-			}
-		}
+            if ( _subscriptions.ContainsKey( name ) ) {
 
-		public void SubscribeProperty( string name, IReactiveProperty<double> property ) {
+                _subscriptions[name].Dispose();
+            }
 
-			if ( subscriptions.ContainsKey( name ) ) {
+            _subscriptions[name] = property.Subscribe( _ => this[name] = _ );
+        }
 
-				subscriptions[name].Dispose();
-			}
+        public void SubscribeProperty( string name, IReactiveProperty<int> property ) {
 
-			subscriptions[name] = property.Subscribe( _ => this[name] = _ );
-		}
+            if ( _subscriptions.ContainsKey( name ) ) {
 
-		public void SubscribeProperty( string name, IReactiveProperty<int> property ) {
+                _subscriptions[name].Dispose();
+            }
 
-			if ( subscriptions.ContainsKey( name ) ) {
+            _subscriptions[name] = property.Subscribe( _ => this[name] = _ );
+        }
 
-				subscriptions[name].Dispose();
-			}
+        public IDisposable Subscribe( IObserver<double> observer ) {
 
-			subscriptions[name] = property.Subscribe( _ => this[name] = _ );
-		}
+            return Result.Subscribe( observer );
+        }
 
-		public IDisposable Subscribe( IObserver<double> observer ) {
+        private void Recalculate() {
 
-			return Result.Subscribe( observer );
-		}
+            try {
 
-		private void Recalculate() {
+                _calculator.Clear();
+                Result.Value = _calculator.Evaluate( _expression );
 
-			try {
+                IsValid = true;
+            }
+            catch {
 
-				calculator.Clear();
-				Result.Value = calculator.Evaluate( _expression );
+                IsValid = false;
+            }
+        }
 
-				IsValid = true;
-			} catch {
+    }
 
-				IsValid = false;
-			}
-		}
-	}
 }

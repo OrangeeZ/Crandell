@@ -28,6 +28,8 @@ public class DeadStateInfo : CharacterStateInfo {
 
             character.pawn.SetGravityEnabled( true );
 
+            GameplayController.instance.dangerLevel.Value += 1;
+
             while ( CanBeSet() ) {
 
                 yield return null;

@@ -1,9 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Expressions;
+using UniRx;
 using UnityEngine.ScriptableObjectWizard;
 
 [Category( "Weapons" )]
 public class RangedWeaponInfo : WeaponInfo {
+
+    [CalculatorExpression]
+    [SerializeField]
+    private StringReactiveProperty _damageExpression;
 
     [SerializeField]
     private Projectile _projectilePrefab;
@@ -19,17 +25,20 @@ public class RangedWeaponInfo : WeaponInfo {
 
     private class RangedWeapon : Weapon<RangedWeaponInfo> {
 
-        private float nextAttackTime;
-        private int ammoInClip = 0;
+        private float _nextAttackTime;
+        private int _ammoInClip;
+        private readonly ReactiveCalculator _damageCalculator;
 
         public RangedWeapon( RangedWeaponInfo info ) : base( info ) {
 
-            ammoInClip = info._clipSize;
+            _ammoInClip = info._clipSize;
+            _damageCalculator = new ReactiveCalculator( info._damageExpression );
+            _damageCalculator.SubscribeProperty( "dangerLevel", GameplayController.instance.dangerLevel );
         }
 
         public override void Attack( Character target ) {
 
-            if ( target == null || Time.timeSinceLevelLoad < nextAttackTime ) {
+            if ( target == null || Time.timeSinceLevelLoad < _nextAttackTime ) {
 
                 return;
             }
@@ -42,9 +51,7 @@ public class RangedWeaponInfo : WeaponInfo {
             var projectile = Instantiate( typedInfo._projectilePrefab );
             var targetDirection = character.pawn.planetTransform.GetDirectionTo( target.pawn.planetTransform );
 
-            projectile.Launch( character, targetDirection, typedInfo._projectileSpeed, typedInfo.baseDamage );
-
-            //target.health.Value -= typedInfo.baseDamage;
+            projectile.Launch( character, targetDirection, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
 
             if ( character.pawn.turret != null ) {
 
@@ -56,7 +63,7 @@ public class RangedWeaponInfo : WeaponInfo {
 
         public override void Attack( Vector3 direction ) {
 
-            if ( Time.timeSinceLevelLoad < nextAttackTime ) {
+            if ( Time.timeSinceLevelLoad < _nextAttackTime ) {
 
                 return;
             }
@@ -67,9 +74,7 @@ public class RangedWeaponInfo : WeaponInfo {
             }
 
             var projectile = Instantiate( typedInfo._projectilePrefab );
-            projectile.Launch( character, direction, typedInfo._projectileSpeed, typedInfo.baseDamage);
-
-            //target.health.Value -= typedInfo.baseDamage;
+            projectile.Launch( character, direction, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
 
             UpdateClipAndAttackTime();
         }
@@ -80,17 +85,17 @@ public class RangedWeaponInfo : WeaponInfo {
         }
 
         private void UpdateClipAndAttackTime() {
-            
-            ammoInClip--;
 
-            if ( ammoInClip == 0 ) {
+            _ammoInClip--;
 
-                ammoInClip = typedInfo._clipSize;
+            if ( _ammoInClip == 0 ) {
 
-                nextAttackTime = Time.timeSinceLevelLoad + typedInfo._reloadDuration;
+                _ammoInClip = typedInfo._clipSize;
+
+                _nextAttackTime = Time.timeSinceLevelLoad + typedInfo._reloadDuration;
             } else {
 
-                nextAttackTime = Time.timeSinceLevelLoad + typedInfo.baseAttackSpeed;
+                _nextAttackTime = Time.timeSinceLevelLoad + typedInfo.baseAttackSpeed;
             }
         }
 
