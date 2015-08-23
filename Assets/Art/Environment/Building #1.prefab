@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11425978}
   - 65: {fileID: 6582974}
   - 54: {fileID: 5435234}
+  - 114: {fileID: 11417334}
   m_Layer: 0
   m_Name: 'Building #1'
   m_TagString: Untagged
@@ -118,6 +119,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11417334
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 118706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ec0ecaa1584b3448e7c3ca8e3e5b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 2
+  userData: {fileID: 0}
 --- !u!114 &11425978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  sphereCollider: {fileID: 11417334}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -168,6 +183,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_UseGravity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: sphereCollider
+      value: 
+      objectReference: {fileID: 11417334}
+    - target: {fileID: 0}
+      propertyPath: radius
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

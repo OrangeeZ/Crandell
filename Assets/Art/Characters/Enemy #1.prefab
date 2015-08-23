@@ -80,6 +80,7 @@ GameObject:
   - 54: {fileID: 5474774}
   - 114: {fileID: 11413862}
   - 135: {fileID: 13513820}
+  - 114: {fileID: 11477184}
   m_Layer: 0
   m_Name: 'Enemy #1'
   m_TagString: Untagged
@@ -384,6 +385,7 @@ MonoBehaviour:
   _weight: 10
   _startingHeight: 6
   _rotationToDirectionSpeed: 100
+  _sphereCollider: {fileID: 11477184}
 --- !u!114 &11419550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -424,6 +426,19 @@ MonoBehaviour:
   projectile: {fileID: 11485336, guid: 0279e86c0ddf9454ba983488188b970e, type: 2}
   moveJoystick: {fileID: 0}
   attackJoystick: {fileID: 0}
+--- !u!114 &11477184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21ec0ecaa1584b3448e7c3ca8e3e5b76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  userData: {fileID: 0}
 --- !u!114 &11490960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -502,6 +517,10 @@ Prefab:
       propertyPath: _weight
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _sphereCollider
+      value: 
+      objectReference: {fileID: 11477184}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 170142}

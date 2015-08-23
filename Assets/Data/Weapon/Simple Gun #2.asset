@@ -18,6 +18,8 @@ MonoBehaviour:
   baseAttackSpeed: .5
   attackRange: 20
   slotType: 0
+  _damageExpression:
+    value: 1 + dangerLevel
   _projectilePrefab: {fileID: 11485336, guid: 08ec181382a3c044e9aa96ac56909a60, type: 2}
   _projectileSpeed: 30
   _clipSize: 5

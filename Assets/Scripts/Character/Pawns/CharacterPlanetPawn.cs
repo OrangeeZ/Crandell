@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System.CodeDom;
+using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class CharacterPlanetPawn : CharacterPawn {
 
@@ -17,6 +19,9 @@ public class CharacterPlanetPawn : CharacterPawn {
 
     [SerializeField]
     private float _rotationToDirectionSpeed = 100;
+
+    [SerializeField]
+    private SimpleSphereCollider _sphereCollider;
 
     private Vector3? _destination;
     private bool _isGravityEnabled;
@@ -46,14 +51,23 @@ public class CharacterPlanetPawn : CharacterPawn {
             var direction = planetTransform.GetDirectionTo( _destination.Value );
 
             planetTransform.Move( transform, Vector3.forward, speed * Time.deltaTime );
-            
-            transform.rotation = Quaternion.RotateTowards( transform.rotation, transform.rotation * Quaternion.FromToRotation( Vector3.forward, direction.Set( y: 0 ) ), _rotationToDirectionSpeed * Time.deltaTime );
+
+            rotation = Quaternion.RotateTowards( transform.rotation, transform.rotation * Quaternion.FromToRotation( Vector3.forward, direction.Set( y: 0 ) ), _rotationToDirectionSpeed * Time.deltaTime );
+
+            ApplyPunishingForce();
         }
+
     }
 
     public override void MoveDirection( Vector3 direction ) {
 
         planetTransform.Move( transform, direction, speed * Time.deltaTime );
+
+        if ( _sphereCollider == null ) {
+            return;
+        }
+
+        ApplyPunishingForce();
     }
 
     public override void SetDestination( Vector3 destination ) {
@@ -89,6 +103,20 @@ public class CharacterPlanetPawn : CharacterPawn {
 
             _ySpeed = 0;
         }
+    }
+
+    private void ApplyPunishingForce() {
+
+        var punishingForce = Building.instances
+            .Select(_ => _.sphereCollider)
+            .Where(_sphereCollider.Intersects)
+            .Select(_ => _.CalculatePunishingForce(_sphereCollider))
+            .Aggregate(Vector3.zero, (total, each) => each + total);
+
+        punishingForce = Quaternion.Inverse(rotation) * punishingForce;
+        punishingForce.y = 0;
+
+        planetTransform.Move(transform, punishingForce, 1f);
     }
 
 }
