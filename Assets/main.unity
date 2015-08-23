@@ -252,48 +252,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 8.85999966
   strength: 1
---- !u!1001 &165744172
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 432958, guid: 43b615047ae5a754ebfe90e543b700c8, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 432958, guid: 43b615047ae5a754ebfe90e543b700c8, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 12.6389999
-      objectReference: {fileID: 0}
-    - target: {fileID: 432958, guid: 43b615047ae5a754ebfe90e543b700c8, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 432958, guid: 43b615047ae5a754ebfe90e543b700c8, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 432958, guid: 43b615047ae5a754ebfe90e543b700c8, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 432958, guid: 43b615047ae5a754ebfe90e543b700c8, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 432958, guid: 43b615047ae5a754ebfe90e543b700c8, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 432958, guid: 43b615047ae5a754ebfe90e543b700c8, type: 2}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 43b615047ae5a754ebfe90e543b700c8, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &268865428
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,6 +480,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 512859952}
   - 114: {fileID: 512859951}
+  - 114: {fileID: 512859953}
   m_Layer: 0
   m_Name: Enemy Spawner
   m_TagString: Untagged
@@ -556,6 +515,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &512859953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 512859950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: bcf12e17578bf7747b1f4ccf511fbd3c, type: 2}
+  startingItems: []
+  startingWeapon: {fileID: 11400000, guid: 4ce7b04c8c02549b6abda7a262bc6847, type: 2}
+  cameraBehaviour: {fileID: 0}
+  spawnInterval: 3
 --- !u!1 &606239036
 GameObject:
   m_ObjectHideFlags: 0
