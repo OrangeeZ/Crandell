@@ -14,7 +14,7 @@ MonoBehaviour:
   statusInfo: {fileID: 11400000, guid: 5924903500bfb21419b0656bb3c43980, type: 2}
   statExpressionsInfo: {fileID: 11400000, guid: 16fdf0a766f14354893e3a69d18df7f7,
     type: 2}
-  stateControllerInfo: {fileID: 11400000, guid: cc21519a2b85b254d917d68bb9e6921f,
+  stateControllerInfo: {fileID: 11400000, guid: 3cb42ae83ad612244ba332daaaca260e,
     type: 2}
   weaponStateControllerInfo: {fileID: 11400000, guid: 9b6c4a2e8d5a93049802030a80c64b9f,
     type: 2}

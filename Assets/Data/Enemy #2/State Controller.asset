@@ -17,5 +17,5 @@ MonoBehaviour:
     transitionMask: 000101
   - stateInfo: {fileID: 11400000, guid: 40f545349e4d63b4c9cde3dae96b7c73, type: 2}
     transitionMask: 010001
-  - stateInfo: {fileID: 11400000, guid: 74c66d15974f8ca488bbfcf641b38fe0, type: 2}
+  - stateInfo: {fileID: 11400000, guid: d8a7e91f9d3e79a49af88fb89353b0ad, type: 2}
     transitionMask: 000000
