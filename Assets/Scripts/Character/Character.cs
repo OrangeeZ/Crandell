@@ -45,7 +45,6 @@ public class Character {
         Observable.EveryUpdate().Subscribe( OnUpdate );
 
         status.moveSpeed.Subscribe( UpdatePawnSpeed );
-        health.Subscribe( OnHealthChange );
 
         instances.Add( this );
     }
