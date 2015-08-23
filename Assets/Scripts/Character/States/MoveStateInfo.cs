@@ -19,8 +19,6 @@ public class MoveStateInfo : CharacterStateInfo {
 
             while ( CanBeSet() ) {
 
-                Debug.Log( "Moving" );
-
                 character.pawn.MoveDirection( GetMoveDirection() );
 
                 yield return null;
@@ -29,9 +27,7 @@ public class MoveStateInfo : CharacterStateInfo {
 
         private Vector3 GetMoveDirection() {
 
-            Debug.Log( new Vector3( Input.GetAxis( "Horizontal" ), 0, Input.GetAxis( "Vertical" ) ) );
-
-            return new Vector3( Input.GetAxis( "Horizontal" ), 0, Input.GetAxis( "Vertical" ) ); //GameScreen.instance.moveJoystick.GetValue();
+            return GameScreen.instance.moveJoystick.GetValue();
         }
 
     }

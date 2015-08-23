@@ -16,8 +16,6 @@ public class PlanetSurfaceTransform {
 
     public void Move( Transform transform, Vector3 direction, float speed ) {
 
-        Debug.Log( direction );
-
         var distance = height + _planet.radius;
 
         var circleLength = 2f * Mathf.PI * distance;
