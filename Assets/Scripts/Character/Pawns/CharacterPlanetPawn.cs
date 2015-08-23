@@ -8,7 +8,10 @@ public class CharacterPlanetPawn : CharacterPawn {
     public bool canFollowDestination;
 
     public GameObject turret;
-    
+
+    [SerializeField]
+    private float _weight = 1f;
+
     [SerializeField]
     private float _startingHeight = 5;
 
@@ -16,6 +19,8 @@ public class CharacterPlanetPawn : CharacterPawn {
     private float _rotationToDirectionSpeed = 100;
 
     private Vector3? _destination;
+    private bool _isGravityEnabled;
+    private float _ySpeed;
 
     protected override void Start() {
 
@@ -28,19 +33,21 @@ public class CharacterPlanetPawn : CharacterPawn {
 
     private void Update() {
 
+        if ( _isGravityEnabled ) {
+
+            _ySpeed += _weight * Time.deltaTime;
+
+            planetTransform.SetHeight( planetTransform.height - _ySpeed * Time.deltaTime );
+            planetTransform.UpdatePosition( transform );
+        }
+
         if ( _destination.HasValue && canFollowDestination ) {
 
             var direction = planetTransform.GetDirectionTo( _destination.Value );
 
             planetTransform.Move( transform, Vector3.forward, speed * Time.deltaTime );
-
-            Debug.DrawRay( transform.position, planetTransform.rotation * Vector3.forward );
-            Debug.DrawRay( transform.position, transform.rotation * direction.Set( y: 0 ).normalized );
-
+            
             transform.rotation = Quaternion.RotateTowards( transform.rotation, transform.rotation * Quaternion.FromToRotation( Vector3.forward, direction.Set( y: 0 ) ), _rotationToDirectionSpeed * Time.deltaTime );
-
-            //transform.rotation *= Quaternion.RotateTowards( transform.rotation, transform.rotation * Quaternion.FromToRotation( Vector3.forward, direction.Set( y: 0 ).normalized ), _rotationToDirectionSpeed * Time.deltaTime );
-            //transform.rotation *= Quaternion.AngleAxis( _rotationToDirectionSpeed * Time.deltaTime, Vector3.up );
         }
     }
 
@@ -72,6 +79,16 @@ public class CharacterPlanetPawn : CharacterPawn {
     public void SetColor( Color baseColor ) {
 
         GetComponentInChildren<Renderer>().material.SetColor( "_Color", baseColor );
+    }
+
+    public void SetGravityEnabled( bool value ) {
+
+        _isGravityEnabled = value;
+
+        if ( !value ) {
+
+            _ySpeed = 0;
+        }
     }
 
 }

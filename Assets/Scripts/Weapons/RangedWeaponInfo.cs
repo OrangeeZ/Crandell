@@ -11,12 +11,20 @@ public class RangedWeaponInfo : WeaponInfo {
     [SerializeField]
     private float _projectileSpeed;
 
+    [SerializeField]
+    private int _clipSize;
+
+    [SerializeField]
+    private float _reloadDuration;
+
     private class RangedWeapon : Weapon<RangedWeaponInfo> {
 
         private float nextAttackTime;
+        private int ammoInClip = 0;
 
         public RangedWeapon( RangedWeaponInfo info ) : base( info ) {
 
+            ammoInClip = info._clipSize;
         }
 
         public override void Attack( Character target ) {
@@ -43,7 +51,7 @@ public class RangedWeaponInfo : WeaponInfo {
                 character.pawn.turret.transform.localRotation = Quaternion.FromToRotation( Vector3.forward, targetDirection );
             }
 
-            nextAttackTime = Time.timeSinceLevelLoad + typedInfo.baseAttackSpeed;
+            UpdateClipAndAttackTime();
         }
 
         public override void Attack( Vector3 direction ) {
@@ -63,12 +71,27 @@ public class RangedWeaponInfo : WeaponInfo {
 
             //target.health.Value -= typedInfo.baseDamage;
 
-            nextAttackTime = Time.timeSinceLevelLoad + typedInfo.baseAttackSpeed;
+            UpdateClipAndAttackTime();
         }
 
         public override bool CanAttack( Character target ) {
 
             return target.pawn.planetTransform.GetDistanceTo( character.pawn.position ) <= typedInfo.attackRange;
+        }
+
+        private void UpdateClipAndAttackTime() {
+            
+            ammoInClip--;
+
+            if ( ammoInClip == 0 ) {
+
+                ammoInClip = typedInfo._clipSize;
+
+                nextAttackTime = Time.timeSinceLevelLoad + typedInfo._reloadDuration;
+            } else {
+
+                nextAttackTime = Time.timeSinceLevelLoad + typedInfo.baseAttackSpeed;
+            }
         }
 
     }

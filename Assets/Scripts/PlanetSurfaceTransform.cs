@@ -104,7 +104,7 @@ public class PlanetSurfaceTransform {
 
     public void SetHeight( float height ) {
 
-        this.height = height;
+        this.height = height.Clamped( 0, float.MaxValue );
     }
 
     public void SetPosition( Transform transform ) {
@@ -112,6 +112,11 @@ public class PlanetSurfaceTransform {
         rotation = Quaternion.FromToRotation( Vector3.up, transform.position );
 
         transform.rotation = rotation;
+        transform.position = rotation * Vector3.up * ( _planet.radius + height );
+    }
+
+    public void UpdatePosition( Transform transform ) {
+
         transform.position = rotation * Vector3.up * ( _planet.radius + height );
     }
 

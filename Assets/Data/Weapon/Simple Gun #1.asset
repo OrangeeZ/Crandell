@@ -20,3 +20,5 @@ MonoBehaviour:
   slotType: 0
   _projectilePrefab: {fileID: 11485336, guid: 0279e86c0ddf9454ba983488188b970e, type: 2}
   _projectileSpeed: 70
+  _clipSize: 5
+  _reloadDuration: 2

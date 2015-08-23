@@ -381,6 +381,7 @@ MonoBehaviour:
   animatedViewPrefab: {fileID: 0}
   canFollowDestination: 0
   turret: {fileID: 0}
+  _weight: 10
   _startingHeight: 6
   _rotationToDirectionSpeed: 100
 --- !u!114 &11419550
@@ -496,6 +497,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: _rotationToDirectionSpeed
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _weight
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

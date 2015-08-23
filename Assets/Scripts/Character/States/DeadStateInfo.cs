@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
 using UniRx;
 using UnityEngine.ScriptableObjectWizard;
 
@@ -26,6 +25,8 @@ public class DeadStateInfo : CharacterStateInfo {
         public override IEnumerable GetEvaluationBlock() {
 
             character.pawn.ClearDestination();
+
+            character.pawn.SetGravityEnabled( true );
 
             while ( CanBeSet() ) {
 

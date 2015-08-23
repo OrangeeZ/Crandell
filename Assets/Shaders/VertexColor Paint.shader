@@ -26,6 +26,7 @@
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex);
 
 			o.Albedo = IN.color.r >= 0.99 ? _Color.rgb : c.rgb;
+			o.Metallic = 0.5;
 			o.Alpha = c.a;
 		}
 		ENDCG
