@@ -6,7 +6,10 @@ public class HelicopterDeadStateInfo : CharacterStateInfo {
 
     [SerializeField]
     private float _spinningSpeed;
-    
+
+    [SerializeField]
+    private float _splashDamageRadius;
+
     [SerializeField]
     private int _impactDamage;
 
@@ -44,6 +47,8 @@ public class HelicopterDeadStateInfo : CharacterStateInfo {
 
                 yield return null;
             }
+
+            Helpers.DoSplashDamage( character.pawn.position, typedInfo._splashDamageRadius, typedInfo._impactDamage );
 
             while ( true ) {
 

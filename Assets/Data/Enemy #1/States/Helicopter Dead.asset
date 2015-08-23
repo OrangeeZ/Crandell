@@ -13,5 +13,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animatorStateName: 
   _spinningSpeed: 480
-  _moveSpeed: 1
+  _splashDamageRadius: 10
   _impactDamage: 5
