@@ -29,18 +29,30 @@ public class EnemySpawner : MonoBehaviour {
 	public StringReactiveProperty activation;
 	private Expressions.ReactiveCalculator _reactCalc;
 
+	public StringReactiveProperty deactivation;
+	private Expressions.ReactiveCalculator _reactCalcDeact;
+
 	private void Start() {
 		_planet = FindObjectOfType<Planet>();
 		planetTransform = new PlanetSurfaceTransform( _planet );
 		_reactCalc = new Expressions.ReactiveCalculator (activation);
 		_reactCalc.SubscribeProperty( "dangerLevel", GameplayController.instance.dangerLevel );
+
+		_reactCalcDeact = new Expressions.ReactiveCalculator (deactivation);
+		_reactCalcDeact.SubscribeProperty( "dangerLevel", GameplayController.instance.dangerLevel );
+
 		SpawnThisEnemyNow11111 ();	
+
 	}
 
 	private void SpawnThisEnemyNow11111() {
 		startTime = 0.0f;
 
 		if (_reactCalc.Result.Value < 0) {
+			return;
+		}
+
+		if (_reactCalcDeact.Result.Value >= 0) {
 			return;
 		}
 

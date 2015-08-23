@@ -481,7 +481,7 @@ GameObject:
   - 4: {fileID: 512859952}
   - 114: {fileID: 512859953}
   m_Layer: 0
-  m_Name: Enemy Spawner
+  m_Name: SpawnTank0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -512,13 +512,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: bcf12e17578bf7747b1f4ccf511fbd3c, type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 4ce7b04c8c02549b6abda7a262bc6847, type: 2}
+  startingWeapon: {fileID: 11400000, guid: 5adf5430be3ae4ed8a916993df78a650, type: 2}
   cameraBehaviour: {fileID: 0}
   spawnInterval: 3
   spawnMoveSpeed: 5
   spawnMoveVector: {x: 1, y: .5}
   activation:
     value: dangerLevel
+  deactivation:
+    value: dangerLevel - 20
 --- !u!1 &724482136
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,7 +720,7 @@ GameObject:
   - 4: {fileID: 751528909}
   - 114: {fileID: 751528910}
   m_Layer: 0
-  m_Name: Enemy Spawner (1)
+  m_Name: SpawnKopter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -735,7 +737,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
 --- !u!114 &751528910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -755,7 +757,9 @@ MonoBehaviour:
   spawnMoveSpeed: 5
   spawnMoveVector: {x: 1, y: .5}
   activation:
-    value: dangerLevel - 10
+    value: dangerLevel - 30
+  deactivation:
+    value: dangerLevel - 50
 --- !u!1 &870884577
 GameObject:
   m_ObjectHideFlags: 0
@@ -766,7 +770,7 @@ GameObject:
   - 4: {fileID: 870884579}
   - 114: {fileID: 870884578}
   m_Layer: 0
-  m_Name: Enemy Spawner (2)
+  m_Name: SpawnTankShotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -791,7 +795,9 @@ MonoBehaviour:
   spawnMoveSpeed: 5
   spawnMoveVector: {x: .400000006, y: .800000012}
   activation:
-    value: dangerLevel - 10
+    value: dangerLevel - 20
+  deactivation:
+    value: dangerLevel - 50
 --- !u!4 &870884579
 Transform:
   m_ObjectHideFlags: 0
@@ -983,6 +989,56 @@ MonoBehaviour:
   screens:
   - {fileID: 724482139}
   startScreen: {fileID: 724482139}
+--- !u!1 &1330354463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1330354465}
+  - 114: {fileID: 1330354464}
+  m_Layer: 0
+  m_Name: SpawnTankTriplePew
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1330354464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330354463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: bcf12e17578bf7747b1f4ccf511fbd3c, type: 2}
+  startingItems: []
+  startingWeapon: {fileID: 11400000, guid: f1523a52c882b474a991693603bd9ad5, type: 2}
+  cameraBehaviour: {fileID: 0}
+  spawnInterval: 3
+  spawnMoveSpeed: 5
+  spawnMoveVector: {x: 1, y: .5}
+  activation:
+    value: dangerLevel - 5
+  deactivation:
+    value: dangerLevel - 25
+--- !u!4 &1330354465
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1330354463}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 28.5300007, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &1432146877
 GameObject:
   m_ObjectHideFlags: 0
