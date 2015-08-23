@@ -53,10 +53,7 @@ public class RangedWeaponInfo : WeaponInfo {
 
             projectile.Launch( character, targetDirection, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
 
-            if ( character.pawn.turret != null ) {
-
-                character.pawn.turret.transform.localRotation = Quaternion.FromToRotation( Vector3.forward, targetDirection );
-            }
+            character.pawn.SetTurretTarget( target.pawn.transform );
 
             UpdateClipAndAttackTime();
         }

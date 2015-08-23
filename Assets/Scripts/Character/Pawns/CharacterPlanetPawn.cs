@@ -27,6 +27,8 @@ public class CharacterPlanetPawn : CharacterPawn {
     private bool _isGravityEnabled;
     private float _ySpeed;
 
+    private Transform _turretTarget;
+
     protected override void Start() {
 
         planetTransform = new PlanetSurfaceTransform( Planet.instance );
@@ -55,6 +57,16 @@ public class CharacterPlanetPawn : CharacterPawn {
             rotation = Quaternion.RotateTowards( transform.rotation, transform.rotation * Quaternion.FromToRotation( Vector3.forward, direction.Set( y: 0 ) ), _rotationToDirectionSpeed * Time.deltaTime );
 
             ApplyPunishingForce();
+        }
+
+        if ( turret != null && _turretTarget != null ) {
+
+            if ( character.pawn.turret != null ) {
+
+                var direction = planetTransform.GetDirectionTo( _turretTarget.position );
+
+                character.pawn.turret.transform.localRotation = Quaternion.FromToRotation( Vector3.forward, direction );
+            }
         }
 
     }
@@ -90,9 +102,18 @@ public class CharacterPlanetPawn : CharacterPawn {
         _destination = null;
     }
 
+    public void SetTurretTarget( Transform turretTarget ) {
+
+        _turretTarget = turretTarget;
+    }
+
     public void SetColor( Color baseColor ) {
 
-        GetComponentInChildren<Renderer>().material.SetColor( "_Color", baseColor );
+        var renderers = GetComponentsInChildren<Renderer>();
+        foreach ( var each in renderers ) {
+
+            each.material.SetColor( "_Color", baseColor );
+        }
     }
 
     public void SetGravityEnabled( bool value ) {
@@ -108,15 +129,15 @@ public class CharacterPlanetPawn : CharacterPawn {
     private void ApplyPunishingForce() {
 
         var punishingForce = Building.instances
-            .Select(_ => _.sphereCollider)
-            .Where(_sphereCollider.Intersects)
-            .Select(_ => _.CalculatePunishingForce(_sphereCollider))
-            .Aggregate(Vector3.zero, (total, each) => each + total);
+            .Select( _ => _.sphereCollider )
+            .Where( _sphereCollider.Intersects )
+            .Select( _ => _.CalculatePunishingForce( _sphereCollider ) )
+            .Aggregate( Vector3.zero, ( total, each ) => each + total );
 
-        punishingForce = Quaternion.Inverse(rotation) * punishingForce;
+        punishingForce = Quaternion.Inverse( rotation ) * punishingForce;
         punishingForce.y = 0;
 
-        planetTransform.Move(transform, punishingForce, 1f);
+        planetTransform.Move( transform, punishingForce, 1f );
     }
 
 }
