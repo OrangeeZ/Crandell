@@ -771,9 +771,9 @@ MonoBehaviour:
   spawnMoveSpeed: 5
   spawnMoveVector: {x: 1, y: .5}
   activation:
-    value: dangerLevel - 20
+    value: dangerLevel - 50
   deactivation:
-    value: dangerLevel - 100
+    value: dangerLevel - 1000
 --- !u!1 &870884577
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,7 +1169,7 @@ MonoBehaviour:
   spawnMoveSpeed: 5
   spawnMoveVector: {x: 1, y: .5}
   activation:
-    value: dangerLevel - 2
+    value: dangerLevel - 5
   deactivation:
     value: dangerLevel - 40
 --- !u!4 &1330354465
