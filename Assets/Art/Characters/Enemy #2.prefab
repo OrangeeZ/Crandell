@@ -58,7 +58,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 432958}
-  - 114: {fileID: 11475928}
   - 54: {fileID: 5474774}
   - 114: {fileID: 11413862}
   - 135: {fileID: 13513820}
@@ -290,22 +289,6 @@ MonoBehaviour:
   _startingHeight: 0
   _rotationToDirectionSpeed: 100
   _sphereCollider: {fileID: 11481190}
---- !u!114 &11475928
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170142}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1874620cf57769c45b0f925c4df42849, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 15
-  characterController: {fileID: 0}
-  projectile: {fileID: 11485336, guid: 0279e86c0ddf9454ba983488188b970e, type: 2}
-  moveJoystick: {fileID: 0}
-  attackJoystick: {fileID: 0}
 --- !u!114 &11481190
 MonoBehaviour:
   m_ObjectHideFlags: 1
