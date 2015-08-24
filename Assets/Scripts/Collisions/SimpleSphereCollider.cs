@@ -18,7 +18,7 @@ public class SimpleSphereCollider : MonoBehaviour {
         var deltaVector = otherCollider.transform.position - transform.position;
         var maxDistance = otherCollider.radius + radius;
 
-        if ( deltaVector.x >= maxDistance && deltaVector.y >= maxDistance && deltaVector.z >= maxDistance ) {
+        if ( deltaVector.x >= maxDistance || deltaVector.y >= maxDistance || deltaVector.z >= maxDistance ) {
 
             return Vector3.zero;
         }

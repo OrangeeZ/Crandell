@@ -15,7 +15,10 @@ public class CharacterStateControllerInfo : ScriptableObject {
 		public bool[] transitionMask;
 	}
 
-	public bool isDebug = false;
+
+    public bool updateAnimation = false;
+
+    public bool isDebug = false;
 
 	[SerializeField]
 	private List<StateTransitionEntry> entries;
@@ -25,6 +28,7 @@ public class CharacterStateControllerInfo : ScriptableObject {
 		var result = new CharacterStateController {
 
 			debug = isDebug,
+            updateAnimation = updateAnimation,
 			states = entries.Select( _ => _.stateInfo.GetState() ).ToArray(),
 		};
 

@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2919310fcb3e35044b2250fb1e689822, type: 3}
   m_Name: Move
   m_EditorClassIdentifier: 
-  animatorStateName: 
+  animatorStateName: Move

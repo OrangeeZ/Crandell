@@ -5,7 +5,7 @@ using UnityEngine;
 using System.Collections;
 
 public abstract class CharacterState {
-
+    
     public readonly CharacterStateInfo info;
 
     protected Character character {
@@ -67,7 +67,7 @@ public abstract class CharacterState {
     }
 
     protected virtual void OnAnimationUpdate( CharacterComplexAnimationController animationController ) {
-
+        
         animationController.SetBool( info.animatorStateName, true );
     }
 

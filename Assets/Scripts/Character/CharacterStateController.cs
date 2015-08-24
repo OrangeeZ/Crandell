@@ -7,15 +7,16 @@ using System.Collections;
 public class CharacterStateController {
 
 	public bool debug = false;
+    public bool updateAnimation = false;
 
-	[HideInInspector]
+    [HideInInspector]
 	public Character character;
 
 	public IList<CharacterState> states = null;
 
 	private CharacterState currentState { get; set; }
 
-	private IEnumerator evaluationBlock = null;
+    private IEnumerator evaluationBlock = null;
 
 	private Queue<CharacterState> scheduledStates = new Queue<CharacterState>();
 
@@ -67,7 +68,10 @@ public class CharacterStateController {
 
 			evaluationBlock.MoveNext();
 
-			currentState.UpdateAnimator();
+		    if ( updateAnimation ) {
+
+                currentState.UpdateAnimator();
+		    }
 
 		} else {
 

@@ -10,7 +10,7 @@ public class CharacterPawn : AObject {
 	private SphereSensor sensor;
     
 	[SerializeField]
-	private CharacterComplexAnimationController animatedViewPrefab;
+	private CharacterComplexAnimationController _animationController;
 
 	public CharacterComplexAnimationController animatedView { get; private set; }
 
@@ -18,11 +18,13 @@ public class CharacterPawn : AObject {
 
 	protected virtual void Start() {
 
-		if ( animatedViewPrefab != null ) {
+	    animatedView = _animationController;
 
-			animatedView = Instantiate( animatedViewPrefab );
-			animatedView.transform.SetParent( transform, worldPositionStays: false );
-		}
+	    //if ( animatedViewPrefab != null ) {
+
+	    //	animatedView = Instantiate( animatedViewPrefab );
+	    //	animatedView.transform.SetParent( transform, worldPositionStays: false );
+	    //}
 	}
 
 	public SphereSensor GetSphereSensor() {

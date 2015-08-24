@@ -29,7 +29,12 @@ public class CharacterPlanetPawn : CharacterPawn {
 
     private Transform _turretTarget;
 
+    [SerializeField]
+    private Transform _subTransform;
+
     protected override void Start() {
+
+        base.Start();
 
         planetTransform = new PlanetSurfaceTransform( Planet.instance );
 
@@ -74,6 +79,11 @@ public class CharacterPlanetPawn : CharacterPawn {
     public override void MoveDirection( Vector3 direction ) {
 
         planetTransform.Move( transform, direction, speed * Time.deltaTime );
+
+        if ( _subTransform ) {
+
+            _subTransform.localRotation = Quaternion.RotateTowards( _subTransform.localRotation, Quaternion.LookRotation( direction.Set( y: 0 ), Vector3.up ), _rotationToDirectionSpeed * Time.deltaTime );
+        }
 
         ApplyPunishingForce();
     }
@@ -121,7 +131,7 @@ public class CharacterPlanetPawn : CharacterPawn {
             _ySpeed = 0;
         }
     }
-    
+
     public void SetActive( bool isActive ) {
 
         var collider = GetComponent<Collider>();
