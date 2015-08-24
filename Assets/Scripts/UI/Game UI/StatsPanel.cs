@@ -13,6 +13,9 @@ public class StatsPanel : MonoBehaviour {
     [SerializeField]
     private Image _reloadingSpinner;
 
+    [SerializeField]
+    private AudioClip _reloadSound;
+
     private Character _character;
 
     public void SetCharacter( Character character ) {
@@ -32,6 +35,11 @@ public class StatsPanel : MonoBehaviour {
         if ( primaryWeapon == null ) {
 
             return;
+        }
+
+        if ( primaryWeapon.isReloading && !_reloadingSpinner.enabled ) {
+
+            AudioSource.PlayClipAtPoint( _reloadSound, transform.position, 0.3f );
         }
 
         _reloadingSpinner.enabled = primaryWeapon.isReloading;

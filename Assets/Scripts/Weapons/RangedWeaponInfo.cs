@@ -23,6 +23,9 @@ public class RangedWeaponInfo : WeaponInfo {
     [SerializeField]
     private float _reloadDuration;
 
+    [SerializeField]
+    private AudioClip _sound;
+
     public class RangedWeapon : Weapon<RangedWeaponInfo> {
 
         public bool isReloading {
@@ -74,6 +77,8 @@ public class RangedWeaponInfo : WeaponInfo {
 
             character.pawn.SetTurretTarget( target.pawn.transform );
 
+            AudioSource.PlayClipAtPoint( typedInfo._sound, character.pawn.position, 0.5f );
+
             UpdateClipAndAttackTime();
         }
 
@@ -93,6 +98,8 @@ public class RangedWeaponInfo : WeaponInfo {
 
             var projectile = Instantiate( typedInfo._projectilePrefab );
             projectile.Launch( character, direction, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
+
+            AudioSource.PlayClipAtPoint( typedInfo._sound, character.pawn.position, 0.5f );
 
             UpdateClipAndAttackTime();
         }

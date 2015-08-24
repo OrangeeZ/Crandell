@@ -1407,6 +1407,7 @@ MonoBehaviour:
   _ammo: {fileID: 1239196691}
   _lives: {fileID: 1492224475}
   _reloadingSpinner: {fileID: 1273618312}
+  _reloadSound: {fileID: 8300000, guid: 727ee49aa2e5ffb47a2f81dbe3b739cf, type: 3}
 --- !u!224 &1590783838
 RectTransform:
   m_ObjectHideFlags: 0

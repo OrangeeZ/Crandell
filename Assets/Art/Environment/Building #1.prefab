@@ -674,6 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20973ac3321321943b59bceb8b9725b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: a459789b5575a8e4b8242de18a39eb69, type: 3}
   animation: {fileID: 11157188}
   delayBeforeDestruction: .5
 --- !u!114 &11417334
@@ -718,6 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832d6a35e01458743990a5688d1eb255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 0}
   _particleSystemPrefab: {fileID: 19830828, guid: 12a13b0bf1fd07b4d85b44c32cceccd4,
     type: 2}
   _emissionPoints:
@@ -736,6 +738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20973ac3321321943b59bceb8b9725b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: a459789b5575a8e4b8242de18a39eb69, type: 3}
   animation: {fileID: 11172382}
   delayBeforeDestruction: .5
 --- !u!114 &11478602
@@ -749,6 +752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832d6a35e01458743990a5688d1eb255, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 0}
   _particleSystemPrefab: {fileID: 19862184, guid: 031d08f52af1daa4f929b85221519426,
     type: 2}
   _emissionPoints:
@@ -767,6 +771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20973ac3321321943b59bceb8b9725b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: a459789b5575a8e4b8242de18a39eb69, type: 3}
   animation: {fileID: 11159734}
   delayBeforeDestruction: .5
 --- !u!1001 &100100000

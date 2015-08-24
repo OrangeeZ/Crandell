@@ -16,6 +16,8 @@ public class BuildingDestructionEffect : EffectsBase {
 
     public override void Activate() {
 
+        base.Activate();
+
         StartCoroutine( Loop() );
     }
 

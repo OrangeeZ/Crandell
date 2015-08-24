@@ -14,14 +14,15 @@ MonoBehaviour:
   name: Simple Gun
   groundView: {fileID: 11488804, guid: 8d03d4a4a777a0e499ba1e113db4a8dc, type: 2}
   inventoryIcon: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
   baseDamage: 1
   baseAttackSpeed: .5
   attackRange: 20
   slotType: 0
-  color: {r: 0, g: 0, b: 0, a: 0}
   _damageExpression:
     value: 1 + dangerLevel
   _projectilePrefab: {fileID: 11485336, guid: 08ec181382a3c044e9aa96ac56909a60, type: 2}
   _projectileSpeed: 30
   _clipSize: 5
   _reloadDuration: 2
+  _sound: {fileID: 8300000, guid: fbc38fc5fe0d4e44ebd5cc0292d22d2c, type: 3}

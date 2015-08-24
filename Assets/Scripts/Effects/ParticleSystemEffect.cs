@@ -12,6 +12,8 @@ public class ParticleSystemEffect : EffectsBase {
 
     public override void Activate() {
 
+        base.Activate();
+
         _emissionPoints
             .Select( _ => Instantiate( _particleSystemPrefab, _.position, _.rotation ) as ParticleSystem )
             .MapImmediate( _ => _.Play() );
