@@ -15,8 +15,10 @@ MonoBehaviour:
   isDebug: 0
   entries:
   - stateInfo: {fileID: 11400000, guid: b5c2ae2cd2792f74bbb28df856d70442, type: 2}
-    transitionMask: 010000
+    transitionMask: 01000001
   - stateInfo: {fileID: 11400000, guid: 543cb030f09b7fb47bf833aee14c582b, type: 2}
-    transitionMask: 000001
+    transitionMask: 00000101
   - stateInfo: {fileID: 11400000, guid: d32e0be13d9be034c8f7b10b0e2d8b84, type: 2}
-    transitionMask: 000100
+    transitionMask: 00010001
+  - stateInfo: {fileID: 11400000, guid: c526afa70b96e6345812bf33e6431b44, type: 2}
+    transitionMask: 00000000

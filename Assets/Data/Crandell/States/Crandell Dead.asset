@@ -8,7 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad5dcd4496e48cc4caadd5ff2cfbf16d, type: 3}
-  m_Name: Dead
+  m_Script: {fileID: 11500000, guid: fc72ce8c33ebdd8419870b95bc5821b4, type: 3}
+  m_Name: Crandell Dead
   m_EditorClassIdentifier: 
   animatorStateName: Dead
+  _delay: .5
+  _damage: 2
+  _damageRadius: 15
+  _deathSound: {fileID: 8300000, guid: 6b346107e43a7b04b8557d978ee486be, type: 3}
