@@ -14,8 +14,5 @@ public class WeaponInfo : ItemInfo {
 
 	public ArmSlotType slotType = ArmSlotType.Primary;
 
-	//public override void Apply( Character target ) {
-
-	//	target.inventory.SetArmSlotItem( ArmSlotType.Primary, this );
-	//}
+    public Color color;
 }

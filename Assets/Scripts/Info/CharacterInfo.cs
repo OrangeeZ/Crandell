@@ -20,14 +20,17 @@ public class CharacterInfo : ScriptableObject {
 
     public bool hasInput;
 
-    public Color baseColor;
+    public bool applyColor = true;
 
     public virtual Character GetCharacter( Vector3 startingPosition ) {
 
         var inputSource = hasInput ? (IInputSource) new ClickInputSource() : gambitListInfo.GetGambitList();
         var pawn = Instantiate( pawnPrefab, startingPosition, Quaternion.identity ) as CharacterPlanetPawn;
 
-        pawn.SetColor( baseColor );
+        //if ( applyColor ) {
+
+        //    pawn.SetColor( baseColor );
+        //}
 
         var result = new Character( statExpressionsInfo,
             pawn, 

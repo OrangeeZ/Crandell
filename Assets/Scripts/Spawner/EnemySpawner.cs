@@ -67,6 +67,11 @@ public class EnemySpawner : MonoBehaviour {
 			var weapon = startingWeapon.GetItem();
 			character.inventory.AddItem( weapon );
 			weapon.Apply();
+
+		    //if ( characterInfo.applyColor ) {
+		        
+                character.pawn.SetColor( startingWeapon.color );
+		    //}
 		}
 		
 		if ( cameraBehaviour != null ) {
