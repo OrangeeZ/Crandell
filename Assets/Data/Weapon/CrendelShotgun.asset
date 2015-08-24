@@ -16,13 +16,13 @@ MonoBehaviour:
   inventoryIcon: {fileID: 0}
   color: {r: .551470578, g: .0121648042, b: .0121648042, a: 0}
   baseDamage: 1
-  baseAttackSpeed: 1
+  baseAttackSpeed: .699999988
   attackRange: 20
   slotType: 0
   _damageExpression:
     value: 1
   _projectilePrefab: {fileID: 11485336, guid: 70a45dd9de6794903bf851ed681a3987, type: 2}
   _projectileSpeed: 20
-  _clipSize: 5
+  _clipSize: 8
   _reloadDuration: 2
   _sound: {fileID: 8300000, guid: a7b948236ee644f95909ab19f5369584, type: 3}
