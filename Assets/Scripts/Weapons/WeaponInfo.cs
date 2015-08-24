@@ -13,6 +13,4 @@ public class WeaponInfo : ItemInfo {
 	public float attackRange = 2f;
 
 	public ArmSlotType slotType = ArmSlotType.Primary;
-
-    public Color color;
 }

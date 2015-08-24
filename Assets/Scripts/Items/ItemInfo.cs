@@ -36,6 +36,8 @@ public class ItemInfo : ScriptableObject {
 
     public Sprite inventoryIcon;
 
+    public Color color;
+
     //public virtual void Apply( Character target ) {
 
     //	throw new NotImplementedException();
@@ -55,6 +57,7 @@ public class ItemInfo : ScriptableObject {
         var view = Instantiate( groundView, transform.position, transform.rotation ) as ItemView;
 
         view.item = item;
+        view.SetColor( color );
     }
 
 }

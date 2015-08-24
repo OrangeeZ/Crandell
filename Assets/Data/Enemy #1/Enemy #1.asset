@@ -23,5 +23,5 @@ MonoBehaviour:
   teamId: 1
   hasInput: 0
   applyColor: 1
-  itemToDrop: {fileID: 11400000, guid: 14597730de9af4a8c89e6befa5bc2100, type: 2}
+  itemToDrop: {fileID: 11400000, guid: 6d8219b2c6df1284983c1c2aded5d56e, type: 2}
   dropProbability: .800000012
