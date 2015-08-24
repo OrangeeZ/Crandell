@@ -15,10 +15,19 @@ public class SimpleSphereCollider : MonoBehaviour {
 
     public Vector3 CalculatePunishingForce( SimpleSphereCollider otherCollider ) {
 
-        var intersectionDirection = ( otherCollider.transform.position - transform.position ).normalized;
-        var intersectionAmount = ( otherCollider.transform.position - transform.position ).magnitude;
+        var deltaVector = otherCollider.transform.position - transform.position;
+        var maxDistance = otherCollider.radius + radius;
 
-        return intersectionDirection * ( otherCollider.radius + radius - intersectionAmount ).Clamped( 0, float.MaxValue );
+        if ( deltaVector.x >= maxDistance && deltaVector.y >= maxDistance && deltaVector.z >= maxDistance ) {
+
+            return Vector3.zero;
+        }
+
+        var intersectionAmount = deltaVector.magnitude;
+
+        var intersectionDirection = deltaVector / intersectionAmount;
+
+        return intersectionDirection * ( maxDistance - intersectionAmount ).Clamped( 0, float.MaxValue );
     }
 
     public bool Intersects( SimpleSphereCollider otherCollider ) {

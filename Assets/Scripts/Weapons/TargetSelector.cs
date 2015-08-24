@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Linq;
+﻿using System.Linq;
+using UnityEngine;
 
 public static class TargetSelector {
 
@@ -9,6 +8,7 @@ public static class TargetSelector {
         var planetTransform = currentCharacter.pawn.planetTransform;
         var characterToDirectionMap = Character.instances
             .Where( _ => _ != currentCharacter )
+            .Where( _ => _.pawn.planetTransform.GetDistanceTo( currentCharacter.pawn.position ) < 15f )
             .Select( _ => new {character = _, direction = Vector3.Dot( planetTransform.GetDirectionTo( _.pawn.position ), direction )} )
             .Where( _ => _.direction >= 0.85f )
             .ToList();

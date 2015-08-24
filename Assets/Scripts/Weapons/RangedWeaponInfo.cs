@@ -68,6 +68,8 @@ public class RangedWeaponInfo : WeaponInfo {
             var projectile = Instantiate( typedInfo._projectilePrefab );
             var targetDirection = character.pawn.planetTransform.GetDirectionTo( target.pawn.planetTransform );
 
+            targetDirection.y *= 1.2f;
+
             projectile.Launch( character, targetDirection, typedInfo._projectileSpeed, (int) _damageCalculator.Result.Value );
 
             character.pawn.SetTurretTarget( target.pawn.transform );

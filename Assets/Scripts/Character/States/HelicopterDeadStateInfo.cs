@@ -50,6 +50,8 @@ public class HelicopterDeadStateInfo : CharacterStateInfo {
 
             Helpers.DoSplashDamage( character.pawn.position, typedInfo._splashDamageRadius, typedInfo._impactDamage );
 
+            character.pawn.SetActive( false );
+
             while ( true ) {
 
                 yield return null;

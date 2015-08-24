@@ -24,7 +24,7 @@ public class Building : MonoBehaviour {
 
     public virtual void Hit( Projectile projectile ) {
 
-        for ( var i = health - projectile.damage; i <= health; i++ ) {
+        for ( var i = health - projectile.damage; i < health; i++ ) {
 
             if ( i >= 0 && i < effects.Length ) {
 
@@ -43,7 +43,6 @@ public class Building : MonoBehaviour {
     public virtual void Destroy() {
 
         GetComponent<Collider>().enabled = false;
-        //Destroy( gameObject );
     }
 
 }

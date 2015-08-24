@@ -1,8 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Linq;
+using Packages.EventSystem;
 
 public static class Helpers {
+
+    public struct SplashDamage : IEventBase {
+
+        public Vector3 position;
+
+    }
 
     public static void DoSplashDamage( Vector3 point, float radius, int amount ) {
 
@@ -11,6 +18,8 @@ public static class Helpers {
 
             each.health.Value -= amount;
         }
+
+        EventSystem.RaiseEvent( new SplashDamage {position = point} );
     }
 
 }

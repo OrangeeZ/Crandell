@@ -28,7 +28,14 @@ public class DeadStateInfo : CharacterStateInfo {
 
             character.pawn.SetGravityEnabled( true );
 
+            character.pawn.SetTurretTarget( null );
+
             GameplayController.instance.dangerLevel.Value += 1;
+
+            if ( stateController == character.stateController ) {
+
+                character.pawn.SetActive( false );
+            }
 
             while ( CanBeSet() ) {
 

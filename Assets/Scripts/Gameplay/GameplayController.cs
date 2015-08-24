@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using UniRx;
 
@@ -11,5 +12,15 @@ public class GameplayController {
     }
 
     public IntReactiveProperty dangerLevel = new IntReactiveProperty( 0 );
+
+    public GameplayController() {
+
+        dangerLevel.Subscribe( OnDangerLevel );
+    }
+
+    private void OnDangerLevel( int i ) {
+
+        Debug.Log( i );
+    }
 
 }

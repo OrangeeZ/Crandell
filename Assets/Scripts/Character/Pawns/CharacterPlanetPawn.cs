@@ -75,10 +75,6 @@ public class CharacterPlanetPawn : CharacterPawn {
 
         planetTransform.Move( transform, direction, speed * Time.deltaTime );
 
-        if ( _sphereCollider == null ) {
-            return;
-        }
-
         ApplyPunishingForce();
     }
 
@@ -125,12 +121,24 @@ public class CharacterPlanetPawn : CharacterPawn {
             _ySpeed = 0;
         }
     }
+    
+    public void SetActive( bool isActive ) {
+
+        var collider = GetComponent<Collider>();
+
+        collider.enabled = isActive;
+        enabled = isActive;
+    }
 
     private void ApplyPunishingForce() {
 
+        if ( _sphereCollider == null ) {
+
+            return;
+        }
+
         var punishingForce = Building.instances
             .Select( _ => _.sphereCollider )
-            .Where( _sphereCollider.Intersects )
             .Select( _ => _.CalculatePunishingForce( _sphereCollider ) )
             .Aggregate( Vector3.zero, ( total, each ) => each + total );
 

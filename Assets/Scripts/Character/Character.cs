@@ -3,8 +3,15 @@ using UniRx;
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Packages.EventSystem;
 
 public class Character {
+
+    public struct Died : IEventBase {
+
+        public Character character;
+
+    }
 
     public static List<Character> instances = new List<Character>();
 
@@ -24,6 +31,8 @@ public class Character {
     public readonly CharacterStatus status;
 
     private readonly StatExpressionsInfo statExpressions;
+
+    private IDisposable _healthDisposable;
 
     public Character( StatExpressionsInfo statExpressions, CharacterPlanetPawn pawn, IInputSource inputSource, CharacterStatus status, CharacterStateController stateController, CharacterStateController weaponStateController, int teamId ) {
 
@@ -46,7 +55,21 @@ public class Character {
 
         status.moveSpeed.Subscribe( UpdatePawnSpeed );
 
+        _healthDisposable = health.Subscribe( OnHealthChange );
+
         instances.Add( this );
+    }
+
+    private void OnHealthChange( int health ) {
+
+        if ( health <= 0 ) {
+
+            instances.Remove( this );
+
+            EventSystem.RaiseEvent( new Died {character = this} );
+
+            _healthDisposable.Dispose();
+        }
     }
 
     private void OnUpdate( long ticks ) {

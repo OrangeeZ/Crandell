@@ -38,8 +38,6 @@ public class PlanetSurfaceTransform {
     public Vector3 GetDirectionTo( PlanetSurfaceTransform otherTransform ) {
 
         var relativePosition = ( otherTransform.rotation ) * Vector3.up * _planet.radius - rotation * Vector3.up * ( _planet.radius );
-        var relativeRotation = otherTransform.rotation * Quaternion.Inverse( rotation );
-
         //var result = new Vector3( relativeRotation.eulerAngles.z, 0, relativeRotation.eulerAngles.y );
 
         var result = Quaternion.Inverse( rotation ) * relativePosition;
@@ -94,12 +92,8 @@ public class PlanetSurfaceTransform {
     public float GetDistanceTo( Vector3 destination ) {
 
         var result = Vector3.Angle( ( Quaternion.FromToRotation( Vector3.up, ( destination - _planet.transform.position ) ) ) * Vector3.up * _planet.radius, rotation * Vector3.up * ( _planet.radius ) ) * Mathf.Deg2Rad * _planet.radius;
-        //var localRotation = Quaternion.Inverse( rotation ) * Quaternion.FromToRotation( Vector3.up, ( destination - _planet.transform.transform ) );
-        //var angle = Quaternion.Angle( Quaternion.identity, localRotation ) * Mathf.Deg2Rad;
 
         return result;
-
-        //return angle * _planet.radius;
     }
 
     public void SetHeight( float height ) {

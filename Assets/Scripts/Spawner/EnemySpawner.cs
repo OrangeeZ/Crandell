@@ -29,7 +29,8 @@ public class EnemySpawner : MonoBehaviour {
 	public StringReactiveProperty activation;
 	private Expressions.ReactiveCalculator _reactCalc;
 
-	public StringReactiveProperty deactivation;
+    [Expressions.CalculatorExpression]
+    public StringReactiveProperty deactivation;
 	private Expressions.ReactiveCalculator _reactCalcDeact;
 
 	private void Start() {
