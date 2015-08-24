@@ -444,8 +444,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: f84b1422aa8df2540b97eff8b36d8447, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: f84b1422aa8df2540b97eff8b36d8447, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: adb08a891c5d29c45a61fd0a35ee0397, type: 2}
+    - target: {fileID: 3300000, guid: f84b1422aa8df2540b97eff8b36d8447, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: cd0a7b3a1df81ce4e854ae3b75f5f9fd, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f84b1422aa8df2540b97eff8b36d8447, type: 3}
   m_IsPrefabParent: 0
@@ -647,7 +655,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 727266257}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
