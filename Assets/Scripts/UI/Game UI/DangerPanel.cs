@@ -1,15 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Runtime.InteropServices;
+using UnityEngine.UI;
+using UniRx;
 
 public class DangerPanel : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    [SerializeField]
+    private Slider _slider;
+
+    void Start() {
+
+        GameplayController.instance.dangerLevel.Subscribe( OnDangerValueChange );
+        _slider.maxValue = GameplayController.maxDanger;
+    }
+
+    private void OnDangerValueChange( int value ) {
+
+        _slider.value = value;
+    }
 }
