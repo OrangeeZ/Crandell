@@ -763,13 +763,13 @@ MonoBehaviour:
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 9e0148989e31d4a9a9beb09789d007c2, type: 2}
   cameraBehaviour: {fileID: 0}
-  spawnInterval: 10
+  spawnInterval: 8
   spawnMoveSpeed: 5
   spawnMoveVector: {x: 1, y: .5}
   activation:
     value: dangerLevel - 30
   deactivation:
-    value: dangerLevel - 50
+    value: dangerLevel - 100
 --- !u!1 &870884577
 GameObject:
   m_ObjectHideFlags: 0

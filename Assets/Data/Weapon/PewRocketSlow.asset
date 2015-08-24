@@ -9,20 +9,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd52a18b43b396c4499e1df91ec30071, type: 3}
-  m_Name: PewPew
+  m_Name: PewRocketSlow
   m_EditorClassIdentifier: 
   name: Simple Gun
   groundView: {fileID: 11488804, guid: 8d03d4a4a777a0e499ba1e113db4a8dc, type: 2}
   inventoryIcon: {fileID: 0}
-  color: {r: 0, g: .441176474, b: .0578093901, a: 0}
+  color: {r: .986206889, g: 1, b: 0, a: 0}
   baseDamage: 1
-  baseAttackSpeed: 1
-  attackRange: 20
+  baseAttackSpeed: .300000012
+  attackRange: 120
   slotType: 0
   _damageExpression:
-    value: 1
-  _projectilePrefab: {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df, type: 2}
-  _projectileSpeed: 25
-  _clipSize: 1
-  _reloadDuration: 2
-  _sound: {fileID: 8300000, guid: b1505393a95d41f4685a39c1950489b2, type: 3}
+    value: 3
+  _projectilePrefab: {fileID: 11485336, guid: 74e76d113ce464f9ab78d2fc0e778d98, type: 2}
+  _projectileSpeed: 20
+  _clipSize: 10
+  _reloadDuration: 4
+  _sound: {fileID: 8300000, guid: fbc38fc5fe0d4e44ebd5cc0292d22d2c, type: 3}

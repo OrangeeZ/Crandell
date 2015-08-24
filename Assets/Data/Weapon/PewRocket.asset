@@ -14,7 +14,7 @@ MonoBehaviour:
   name: Simple Gun
   groundView: {fileID: 11488804, guid: 8d03d4a4a777a0e499ba1e113db4a8dc, type: 2}
   inventoryIcon: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
+  color: {r: .698529422, g: 0, b: 0, a: 0}
   baseDamage: 1
   baseAttackSpeed: .300000012
   attackRange: 120
