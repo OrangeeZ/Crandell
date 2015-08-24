@@ -15,4 +15,4 @@ MonoBehaviour:
   groundView: {fileID: 11488804, guid: 8d03d4a4a777a0e499ba1e113db4a8dc, type: 2}
   inventoryIcon: {fileID: 0}
   color: {r: 0, g: 1, b: .0896551609, a: 0}
-  healingAmount: 10
+  healingAmount: 5

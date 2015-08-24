@@ -980,7 +980,7 @@ MonoBehaviour:
   cameraBehaviour: {fileID: 0}
   itemToDrop: {fileID: 11400000, guid: db1cc5e6032f14490be999a87c5cc1be, type: 2}
   dropProbability: .330000013
-  spawnInterval: 8
+  spawnInterval: 7
   spawnMoveSpeed: 5
   spawnMoveVector: {x: .400000006, y: .800000012}
   activation:
@@ -1255,7 +1255,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: .911764681, g: .0536332168, b: .0536332168, a: 1}
     m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
     m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
     m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
@@ -1547,6 +1547,58 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!1 &1271542846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1271542848}
+  - 114: {fileID: 1271542847}
+  m_Layer: 0
+  m_Name: SpawnTankTriplePew (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1271542847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1271542846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: bcf12e17578bf7747b1f4ccf511fbd3c, type: 2}
+  startingItems: []
+  startingWeapon: {fileID: 11400000, guid: f1523a52c882b474a991693603bd9ad5, type: 2}
+  cameraBehaviour: {fileID: 0}
+  itemToDrop: {fileID: 11400000, guid: 14597730de9af4a8c89e6befa5bc2100, type: 2}
+  dropProbability: .400000006
+  spawnInterval: 5
+  spawnMoveSpeed: 5
+  spawnMoveVector: {x: 1, y: .5}
+  activation:
+    value: dangerLevel - 150
+  deactivation:
+    value: dangerLevel - 1000
+--- !u!4 &1271542848
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1271542846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 28.5300007, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
 --- !u!1 &1330354463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1586,7 +1638,7 @@ MonoBehaviour:
   activation:
     value: dangerLevel - 5
   deactivation:
-    value: dangerLevel - 40
+    value: dangerLevel - 2000
 --- !u!4 &1330354465
 Transform:
   m_ObjectHideFlags: 0
@@ -1767,6 +1819,58 @@ MonoBehaviour:
   startingWeapon: {fileID: 11400000, guid: 8f55b45d13c67498583c537496bcfec0, type: 2}
   cameraBehaviour: {fileID: 11456982, guid: b0d70a7b03f08794794ffb6b7959ba27, type: 2}
   isPlayerCharacter: 1
+--- !u!1 &1697289762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1697289764}
+  - 114: {fileID: 1697289763}
+  m_Layer: 0
+  m_Name: SpawnKopter (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1697289763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1697289762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: 7fdecf6ada2dc1a478c471354ca58167, type: 2}
+  startingItems: []
+  startingWeapon: {fileID: 11400000, guid: 9e0148989e31d4a9a9beb09789d007c2, type: 2}
+  cameraBehaviour: {fileID: 0}
+  itemToDrop: {fileID: 11400000, guid: fdb4b86aac3834b20a5f6575fd242494, type: 2}
+  dropProbability: .300000012
+  spawnInterval: 10
+  spawnMoveSpeed: 5
+  spawnMoveVector: {x: 1, y: .5}
+  activation:
+    value: dangerLevel - 150
+  deactivation:
+    value: dangerLevel - 1000
+--- !u!4 &1697289764
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1697289762}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 32.2000008, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1 &1824340334
 GameObject:
   m_ObjectHideFlags: 0
@@ -2109,7 +2213,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
 --- !u!1 &1987674282
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class GameplayController {
 
     public IntReactiveProperty dangerLevel = new IntReactiveProperty( 0 );
 
-    public static int maxDanger = 100;
+    public static int maxDanger = 1000;
 
     public GameplayController() {
 
