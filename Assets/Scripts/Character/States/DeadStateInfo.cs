@@ -36,9 +36,9 @@ public class DeadStateInfo : CharacterStateInfo {
 
                 character.pawn.SetActive( false );
 
-                if ( 1f.Random() <= character.info.dropProbability && character.info.itemToDrop != null ) {
+                if ( 1f.Random() <= character.dropProbability && character.itemToDrop != null ) {
 
-                    character.info.itemToDrop.DropItem( character.pawn.transform );
+                    character.itemToDrop.DropItem( character.pawn.transform );
                 }
             }
 

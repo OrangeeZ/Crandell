@@ -15,7 +15,10 @@ public class EnemySpawner : MonoBehaviour {
 
 	public CameraBehaviour cameraBehaviour;
 
-	public float spawnInterval;
+    public ItemInfo itemToDrop;
+    public float dropProbability = 0.15f;
+
+    public float spawnInterval;
 	public float spawnMoveSpeed;
 	public Vector2 spawnMoveVector;
 	private float startTime;
@@ -62,6 +65,9 @@ public class EnemySpawner : MonoBehaviour {
 		foreach ( var each in startingItems.Select( _ => _.GetItem() ) ) {
 			character.inventory.AddItem( each );
 		}
+
+	    character.itemToDrop = itemToDrop;
+	    character.dropProbability = dropProbability;
 		
 		if ( startingWeapon != null ) {
 			var weapon = startingWeapon.GetItem();

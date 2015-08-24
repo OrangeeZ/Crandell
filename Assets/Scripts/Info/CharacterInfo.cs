@@ -22,9 +22,6 @@ public class CharacterInfo : ScriptableObject {
 
     public bool applyColor = true;
 
-    public ItemInfo itemToDrop;
-    public float dropProbability = 0.15f;
-
     public virtual Character GetCharacter( Vector3 startingPosition ) {
 
         var inputSource = hasInput ? (IInputSource) new ClickInputSource() : gambitListInfo.GetGambitList();

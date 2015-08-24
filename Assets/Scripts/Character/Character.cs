@@ -31,6 +31,9 @@ public class Character {
 
     public readonly CharacterStatus status;
 
+    public ItemInfo itemToDrop;
+    public float dropProbability = 0.15f;
+
     private readonly StatExpressionsInfo statExpressions;
 
     private readonly IDisposable _healthDisposable;
