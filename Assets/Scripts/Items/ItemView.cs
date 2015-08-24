@@ -3,20 +3,40 @@ using System.Collections;
 
 public class ItemView : AObject {
 
-	public Item item;
+    public Item item;
 
-	public void NotifyPickUp( Character character ) {
+    public float fadeInDuration = 1f;
 
-		Destroy( gameObject );
-	}
+    public AnimationCurve scaleCurve;
+    public AnimationCurve positionCurve;
 
-	//void OnTriggerEnter( Collider other ) {
+    private IEnumerator Start() {
 
-	//	var pawn = other.GetComponent<CharacterPawn>();
+        var timer = new AutoTimer( fadeInDuration );
 
-	//	if ( pawn != null ) {
+        var currentPosition = localPosition;
 
-	//		targetInfo.Apply( pawn.character );
-	//	}
-	//}
+        while ( timer.ValueNormalized < 1f ) {
+
+            transform.localScale = Vector3.one * scaleCurve.Evaluate( timer.ValueNormalized );
+            //transform.localPosition = currentPosition + transform.up * positionCurve.Evaluate( timer.ValueNormalized );
+
+            yield return null;
+        }
+    }
+
+    public void NotifyPickUp( Character character ) {
+
+        Destroy( gameObject );
+    }
+
+    public void SetColor( Color baseColor ) {
+
+        var renderers = GetComponentsInChildren<Renderer>();
+        foreach ( var each in renderers ) {
+
+            each.material.SetColor( "_Color", baseColor );
+        }
+    }
+
 }

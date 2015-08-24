@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: State Controller
   m_EditorClassIdentifier: 
   updateAnimation: 1
-  isDebug: 1
+  isDebug: 0
   entries:
   - stateInfo: {fileID: 11400000, guid: 543cb030f09b7fb47bf833aee14c582b, type: 2}
     transitionMask: 0001

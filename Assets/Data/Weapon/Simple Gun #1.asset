@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Name: 'Simple Gun #1'
   m_EditorClassIdentifier: 
   name: Simple Gun
-  groundView: {fileID: 0}
+  groundView: {fileID: 11488804, guid: 8d03d4a4a777a0e499ba1e113db4a8dc, type: 2}
   inventoryIcon: {fileID: 0}
   baseDamage: 1
   baseAttackSpeed: .100000001
   attackRange: 20
   slotType: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
   _damageExpression:
     value: 1 + dangerLevel
   _projectilePrefab: {fileID: 11485336, guid: 0279e86c0ddf9454ba983488188b970e, type: 2}

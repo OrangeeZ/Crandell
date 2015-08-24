@@ -27,14 +27,15 @@ public class Character {
     public readonly CharacterStateController weaponStateController;
 
     public readonly int teamId;
+    public readonly CharacterInfo info;
 
     public readonly CharacterStatus status;
 
     private readonly StatExpressionsInfo statExpressions;
 
-    private IDisposable _healthDisposable;
+    private readonly IDisposable _healthDisposable;
 
-    public Character( StatExpressionsInfo statExpressions, CharacterPlanetPawn pawn, IInputSource inputSource, CharacterStatus status, CharacterStateController stateController, CharacterStateController weaponStateController, int teamId ) {
+    public Character( StatExpressionsInfo statExpressions, CharacterPlanetPawn pawn, IInputSource inputSource, CharacterStatus status, CharacterStateController stateController, CharacterStateController weaponStateController, int teamId, CharacterInfo info ) {
 
         this.statExpressions = statExpressions;
         this.status = status;
@@ -44,6 +45,7 @@ public class Character {
         this.stateController = stateController;
         this.weaponStateController = weaponStateController;
         this.teamId = teamId;
+        this.info = info;
         this.inventory = new BasicInventory( this );
 
         pawn.SetCharacter( this );

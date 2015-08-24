@@ -22,4 +22,6 @@ MonoBehaviour:
   gambitListInfo: {fileID: 11400000, guid: dc53b2ff0d49cb24dac9137dfb40ea4e, type: 2}
   teamId: 1
   hasInput: 0
-  baseColor: {r: 1, g: 0, b: 0, a: 0}
+  applyColor: 1
+  itemToDrop: {fileID: 11400000, guid: 14597730de9af4a8c89e6befa5bc2100, type: 2}
+  dropProbability: .800000012

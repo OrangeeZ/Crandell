@@ -52,6 +52,11 @@ public class HelicopterDeadStateInfo : CharacterStateInfo {
 
             character.pawn.SetActive( false );
 
+            if ( 1f.Random() <= character.info.dropProbability && character.info.itemToDrop != null ) {
+
+                character.info.itemToDrop.DropItem( character.pawn.transform );
+            }
+
             while ( true ) {
 
                 yield return null;

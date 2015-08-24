@@ -22,27 +22,25 @@ public class CharacterInfo : ScriptableObject {
 
     public bool applyColor = true;
 
+    public ItemInfo itemToDrop;
+    public float dropProbability = 0.15f;
+
     public virtual Character GetCharacter( Vector3 startingPosition ) {
 
         var inputSource = hasInput ? (IInputSource) new ClickInputSource() : gambitListInfo.GetGambitList();
         var pawn = Instantiate( pawnPrefab, startingPosition, Quaternion.identity ) as CharacterPlanetPawn;
 
-        //if ( applyColor ) {
-
-        //    pawn.SetColor( baseColor );
-        //}
-
         var result = new Character( statExpressionsInfo,
-            pawn, 
+            pawn,
             inputSource,
             statusInfo.GetInstance( statExpressionsInfo ),
             stateControllerInfo.GetStateController(),
             weaponStateControllerInfo.GetStateController(),
-            teamId);
+            teamId,
+            this );
 
         if ( !hasInput ) {
 
-            //( inputSource as AIInputSource ).Initialize( result );
             ( inputSource as GambitListInfo.GambitList ).Initialize( result );
         }
 

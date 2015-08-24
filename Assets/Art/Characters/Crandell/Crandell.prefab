@@ -224,6 +224,7 @@ GameObject:
   - 54: {fileID: 5474774}
   - 114: {fileID: 11413862}
   - 114: {fileID: 11462644}
+  - 114: {fileID: 11481272}
   m_Layer: 0
   m_Name: Crandell
   m_TagString: Untagged
@@ -592,8 +593,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.75999999, y: 3.44000006, z: 1}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!95 &9531880
 Animator:
   serializedVersion: 3
@@ -657,6 +658,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 1
   userData: {fileID: 0}
+--- !u!114 &11481272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 147bddcb280acce419e0a67fcd62d58b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pawn: {fileID: 11413862}
 --- !u!137 &13756564
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
