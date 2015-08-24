@@ -627,8 +627,8 @@ MonoBehaviour:
   _animationController: {fileID: 11460206}
   canFollowDestination: 0
   turret: {fileID: 0}
-  _weight: 1
-  _startingHeight: 0
+  _weight: 50
+  _startingHeight: 20
   _rotationToDirectionSpeed: 300
   _sphereCollider: {fileID: 11462644}
   _subTransform: {fileID: 419292}
@@ -776,7 +776,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _startingHeight
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _sphereCollider
@@ -793,6 +793,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: _rotationToDirectionSpeed
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _weight
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

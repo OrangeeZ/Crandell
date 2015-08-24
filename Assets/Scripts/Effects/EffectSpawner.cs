@@ -2,6 +2,7 @@
 using System.Collections;
 using Packages.EventSystem;
 using UniRx;
+using UnityStandardAssets.Effects;
 
 public class EffectSpawner : AObject {
 
@@ -20,12 +21,17 @@ public class EffectSpawner : AObject {
     private void OnBuildingDestruction( BuildingDestructionEffect.Destroyed buildingDestroyedEvent ) {
 
         Instantiate( buildingExplosion, buildingDestroyedEvent.target.position, buildingDestroyedEvent.target.rotation );
-
     }
 
     private void OnSplashDamage( Helpers.SplashDamage splashDamageEvent ) {
 
-        Instantiate( splashExplosion, splashDamageEvent.position, Quaternion.identity );
+        var instance = Instantiate( splashExplosion, splashDamageEvent.position, Quaternion.identity ) as GameObject;
+        var scaler = instance.GetComponent<ParticleSystemMultiplier>();
+
+        if ( scaler != null ) {
+
+            scaler.multiplier = splashDamageEvent.radius;
+        }
     }
 
     private void OnCharacterDie( Character.Died diedEvent ) {

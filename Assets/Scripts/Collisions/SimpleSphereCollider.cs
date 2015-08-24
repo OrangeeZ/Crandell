@@ -40,6 +40,11 @@ public class SimpleSphereCollider : MonoBehaviour {
         return IntersectsInternal( transform.position, radius, otherCollider.transform.position, otherCollider.radius );
     }
 
+    public bool Intersects( Vector3 otherPosition, float otherRadius ) {
+
+        return IntersectsInternal( transform.position, radius, otherPosition, otherRadius );
+    }
+
     public SimpleSphereCollider IntersectsContinuous( IEnumerable<SimpleSphereCollider> otherColliders ) {
 
         var from = previousPosition;

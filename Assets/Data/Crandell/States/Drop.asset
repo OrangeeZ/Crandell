@@ -8,10 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c91e0ee603c9d0345895c8ba71dc3f12, type: 3}
-  m_Name: Helicopter Dead
+  m_Script: {fileID: 11500000, guid: 8d8a69b59171e0d4491354afd3621e8a, type: 3}
+  m_Name: Drop
   m_EditorClassIdentifier: 
   animatorStateName: 
-  _spinningSpeed: 480
-  _splashDamageRadius: 6
-  _impactDamage: 2
+  _damage: 2
+  _damageRadius: 5

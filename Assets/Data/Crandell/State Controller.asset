@@ -14,7 +14,9 @@ MonoBehaviour:
   updateAnimation: 1
   isDebug: 0
   entries:
+  - stateInfo: {fileID: 11400000, guid: b5c2ae2cd2792f74bbb28df856d70442, type: 2}
+    transitionMask: 010000
   - stateInfo: {fileID: 11400000, guid: 543cb030f09b7fb47bf833aee14c582b, type: 2}
-    transitionMask: 0001
+    transitionMask: 000001
   - stateInfo: {fileID: 11400000, guid: d32e0be13d9be034c8f7b10b0e2d8b84, type: 2}
-    transitionMask: 0100
+    transitionMask: 000100

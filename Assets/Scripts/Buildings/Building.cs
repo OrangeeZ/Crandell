@@ -24,7 +24,12 @@ public class Building : MonoBehaviour {
 
     public virtual void Hit( Projectile projectile ) {
 
-        for ( var i = health - projectile.damage; i < health; i++ ) {
+        Hit( projectile.damage );
+    }
+
+    public virtual void Hit( int damage ) {
+
+        for ( var i = health - damage; i < health; i++ ) {
 
             if ( i >= 0 && i < effects.Length ) {
 
@@ -32,7 +37,9 @@ public class Building : MonoBehaviour {
             }
         }
 
-        health -= projectile.damage;
+        health -= damage;
+
+        GameplayController.instance.dangerLevel.Value += 1;
 
         if ( health < 0 ) {
 

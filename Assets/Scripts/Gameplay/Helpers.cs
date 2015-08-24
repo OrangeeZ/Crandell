@@ -8,6 +8,7 @@ public static class Helpers {
     public struct SplashDamage : IEventBase {
 
         public Vector3 position;
+        public float radius;
 
     }
 
@@ -19,7 +20,13 @@ public static class Helpers {
             each.health.Value -= amount;
         }
 
-        EventSystem.RaiseEvent( new SplashDamage {position = point} );
+        var affectedBuildings = Building.instances.Where( _ => _.sphereCollider.Intersects( point, radius ) );
+        foreach ( var each in affectedBuildings ) {
+
+            each.Hit( amount );
+        }
+
+        EventSystem.RaiseEvent( new SplashDamage {position = point, radius = radius * 0.5f} );
     }
 
 }
