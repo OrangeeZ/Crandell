@@ -522,13 +522,15 @@ MonoBehaviour:
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 5adf5430be3ae4ed8a916993df78a650, type: 2}
   cameraBehaviour: {fileID: 0}
+  itemToDrop: {fileID: 11400000, guid: 6d8219b2c6df1284983c1c2aded5d56e, type: 2}
+  dropProbability: .800000012
   spawnInterval: 3
   spawnMoveSpeed: 5
   spawnMoveVector: {x: 1, y: .5}
   activation:
     value: dangerLevel
   deactivation:
-    value: dangerLevel - 20
+    value: dangerLevel - 1000
 --- !u!1 &724482136
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,11 +765,13 @@ MonoBehaviour:
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 9e0148989e31d4a9a9beb09789d007c2, type: 2}
   cameraBehaviour: {fileID: 0}
-  spawnInterval: 8
+  itemToDrop: {fileID: 11400000, guid: fdb4b86aac3834b20a5f6575fd242494, type: 2}
+  dropProbability: .300000012
+  spawnInterval: 10
   spawnMoveSpeed: 5
   spawnMoveVector: {x: 1, y: .5}
   activation:
-    value: dangerLevel - 30
+    value: dangerLevel - 20
   deactivation:
     value: dangerLevel - 100
 --- !u!1 &870884577
@@ -801,13 +805,15 @@ MonoBehaviour:
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: 4ce7b04c8c02549b6abda7a262bc6847, type: 2}
   cameraBehaviour: {fileID: 0}
-  spawnInterval: 3
+  itemToDrop: {fileID: 11400000, guid: db1cc5e6032f14490be999a87c5cc1be, type: 2}
+  dropProbability: .330000013
+  spawnInterval: 8
   spawnMoveSpeed: 5
   spawnMoveVector: {x: .400000006, y: .800000012}
   activation:
     value: dangerLevel - 20
   deactivation:
-    value: dangerLevel - 50
+    value: dangerLevel - 1000
 --- !u!4 &870884579
 Transform:
   m_ObjectHideFlags: 0
@@ -1157,13 +1163,15 @@ MonoBehaviour:
   startingItems: []
   startingWeapon: {fileID: 11400000, guid: f1523a52c882b474a991693603bd9ad5, type: 2}
   cameraBehaviour: {fileID: 0}
-  spawnInterval: 3
+  itemToDrop: {fileID: 11400000, guid: 14597730de9af4a8c89e6befa5bc2100, type: 2}
+  dropProbability: .400000006
+  spawnInterval: 5
   spawnMoveSpeed: 5
   spawnMoveVector: {x: 1, y: .5}
   activation:
-    value: dangerLevel - 5
+    value: dangerLevel - 2
   deactivation:
-    value: dangerLevel - 25
+    value: dangerLevel - 40
 --- !u!4 &1330354465
 Transform:
   m_ObjectHideFlags: 0
@@ -1503,7 +1511,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 5b81c39a23a7f1944a772832f573170d, type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: dc529bdfa16ebd646b558a3f02668d3d, type: 2}
+  startingWeapon: {fileID: 11400000, guid: 8f55b45d13c67498583c537496bcfec0, type: 2}
   cameraBehaviour: {fileID: 11456982, guid: b0d70a7b03f08794794ffb6b7959ba27, type: 2}
   isPlayerCharacter: 1
 --- !u!1 &1874837611

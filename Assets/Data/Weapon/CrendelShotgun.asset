@@ -9,20 +9,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd52a18b43b396c4499e1df91ec30071, type: 3}
-  m_Name: CrendelPewPew2
+  m_Name: CrendelShotgun
   m_EditorClassIdentifier: 
   name: Simple Gun
   groundView: {fileID: 11488804, guid: 8d03d4a4a777a0e499ba1e113db4a8dc, type: 2}
   inventoryIcon: {fileID: 0}
-  color: {r: .986206889, g: 1, b: 0, a: 0}
+  color: {r: .551470578, g: .0121648042, b: .0121648042, a: 0}
   baseDamage: 1
-  baseAttackSpeed: .150000006
-  attackRange: 30
+  baseAttackSpeed: 1
+  attackRange: 20
   slotType: 0
   _damageExpression:
     value: 1
-  _projectilePrefab: {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df, type: 2}
-  _projectileSpeed: 30
-  _clipSize: 8
-  _reloadDuration: 1.5
-  _sound: {fileID: 8300000, guid: b1505393a95d41f4685a39c1950489b2, type: 3}
+  _projectilePrefab: {fileID: 11485336, guid: 70a45dd9de6794903bf851ed681a3987, type: 2}
+  _projectileSpeed: 20
+  _clipSize: 5
+  _reloadDuration: 2
+  _sound: {fileID: 8300000, guid: a7b948236ee644f95909ab19f5369584, type: 3}

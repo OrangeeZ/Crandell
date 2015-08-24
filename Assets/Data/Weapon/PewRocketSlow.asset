@@ -15,14 +15,14 @@ MonoBehaviour:
   groundView: {fileID: 11488804, guid: 8d03d4a4a777a0e499ba1e113db4a8dc, type: 2}
   inventoryIcon: {fileID: 0}
   color: {r: .986206889, g: 1, b: 0, a: 0}
-  baseDamage: 1
-  baseAttackSpeed: .300000012
+  baseDamage: 3
+  baseAttackSpeed: .5
   attackRange: 120
   slotType: 0
   _damageExpression:
     value: 3
   _projectilePrefab: {fileID: 11485336, guid: 74e76d113ce464f9ab78d2fc0e778d98, type: 2}
   _projectileSpeed: 20
-  _clipSize: 10
+  _clipSize: 4
   _reloadDuration: 4
   _sound: {fileID: 8300000, guid: fbc38fc5fe0d4e44ebd5cc0292d22d2c, type: 3}

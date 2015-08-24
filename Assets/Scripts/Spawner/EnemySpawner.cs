@@ -45,6 +45,8 @@ public class EnemySpawner : MonoBehaviour {
 		_reactCalcDeact = new Expressions.ReactiveCalculator (deactivation);
 		_reactCalcDeact.SubscribeProperty( "dangerLevel", GameplayController.instance.dangerLevel );
 
+		planetTransform.Move (transform, spawnMoveVector, 10.0f);
+
 		SpawnThisEnemyNow11111 ();	
 
 	}

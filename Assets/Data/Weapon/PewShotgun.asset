@@ -25,4 +25,4 @@ MonoBehaviour:
   _projectileSpeed: 18
   _clipSize: 1
   _reloadDuration: 3
-  _sound: {fileID: 8300000, guid: b1505393a95d41f4685a39c1950489b2, type: 3}
+  _sound: {fileID: 8300000, guid: a7b948236ee644f95909ab19f5369584, type: 3}
