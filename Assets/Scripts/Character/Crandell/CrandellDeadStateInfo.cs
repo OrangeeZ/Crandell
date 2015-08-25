@@ -57,7 +57,7 @@ public class CrandellDeadStateInfo : CharacterStateInfo {
 
             AudioSource.PlayClipAtPoint( typedInfo._deathSound, character.pawn.position, 0.4f );
 
-            var timer = new AutoTimer(typedInfo._delay);
+            var timer = new AutoTimer( typedInfo._delay );
 
             while ( timer.ValueNormalized < 1 ) {
 
@@ -65,6 +65,8 @@ public class CrandellDeadStateInfo : CharacterStateInfo {
             }
 
             Helpers.DoSplashDamage( character.pawn.position, typedInfo._damageRadius, typedInfo._damage );
+
+            ScreenManager.GetWindow<RestartScreen>().Show();
 
             while ( CanBeSet() ) {
 

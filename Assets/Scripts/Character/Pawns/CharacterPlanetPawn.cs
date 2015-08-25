@@ -140,6 +140,12 @@ public class CharacterPlanetPawn : CharacterPawn {
         enabled = isActive;
     }
 
+    public void MakeDead() {
+
+        GetComponentsInChildren<Rotator>().MapImmediate( Destroy );
+        GetComponentsInChildren<Renderer>().MapImmediate( _ => _.material.color += Color.black * 0.8f );
+    }
+
     private void ApplyPunishingForce() {
 
         if ( _sphereCollider == null ) {

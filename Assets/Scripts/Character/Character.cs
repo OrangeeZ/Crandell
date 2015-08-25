@@ -36,7 +36,7 @@ public class Character {
 
     private readonly StatExpressionsInfo statExpressions;
 
-    private readonly IDisposable _healthDisposable;
+    private readonly CompositeDisposable _compositeDisposable = new CompositeDisposable();
 
     public Character( StatExpressionsInfo statExpressions, CharacterPlanetPawn pawn, IInputSource inputSource, CharacterStatus status, CharacterStateController stateController, CharacterStateController weaponStateController, int teamId, CharacterInfo info ) {
 
@@ -56,11 +56,15 @@ public class Character {
         this.stateController.Initialize( this );
         this.weaponStateController.Initialize( this );
 
-        Observable.EveryUpdate().Subscribe( OnUpdate );
+        var inputSourceDisposable = inputSource as IDisposable;
+        if ( inputSourceDisposable != null ) {
 
-        status.moveSpeed.Subscribe( UpdatePawnSpeed );
+            _compositeDisposable.Add( inputSourceDisposable );
+        }
 
-        _healthDisposable = health.Subscribe( OnHealthChange );
+        Observable.EveryUpdate().Subscribe( OnUpdate ).AddTo( _compositeDisposable );
+        status.moveSpeed.Subscribe( UpdatePawnSpeed ).AddTo( _compositeDisposable );
+        health.Subscribe( OnHealthChange );//.AddTo( _compositeDisposable );
 
         instances.Add( this );
     }
@@ -73,7 +77,7 @@ public class Character {
 
             EventSystem.RaiseEvent( new Died {character = this} );
 
-            _healthDisposable.Dispose();
+            //_compositeDisposable.Dispose();
         }
     }
 
@@ -81,6 +85,11 @@ public class Character {
 
         stateController.Tick( Time.deltaTime );
         weaponStateController.Tick( Time.deltaTime );
+    }
+
+    public void Dispose() {
+
+        _compositeDisposable.Dispose();
     }
 
     public void ApproachAndInteract( Character target ) {

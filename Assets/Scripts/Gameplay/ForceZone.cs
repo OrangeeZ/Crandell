@@ -23,7 +23,7 @@ public class ForceZone : MonoBehaviour {
         instances.Add( this );
     }
 
-    private void Destroy() {
+    private void OnDestroy() {
 
         instances.Remove( this );
     }

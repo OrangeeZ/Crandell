@@ -14,5 +14,5 @@ MonoBehaviour:
   animatorStateName: Dead
   _delay: .5
   _damage: 2
-  _damageRadius: 15
+  _damageRadius: 8
   _deathSound: {fileID: 8300000, guid: 6b346107e43a7b04b8557d978ee486be, type: 3}

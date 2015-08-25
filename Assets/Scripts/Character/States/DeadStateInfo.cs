@@ -40,6 +40,8 @@ public class DeadStateInfo : CharacterStateInfo {
 
                     character.itemToDrop.DropItem( character.pawn.transform );
                 }
+
+                character.pawn.MakeDead();
             }
 
             while ( CanBeSet() ) {

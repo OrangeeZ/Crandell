@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Monads;
 using UniRx;
@@ -8,51 +9,62 @@ using UnityEngine.ScriptableObjectWizard;
 
 namespace AI.Gambits {
 
-	public interface IGambitList {
+    public interface IGambitList {
 
-		void Tick();
-	}
+        void Tick();
 
-	[Category( "Gambits" )]
-	public class GambitListInfo : ScriptableObject {
+    }
 
-		[SerializeField]
-		private GambitInfo[] gambitInfos;
+    [Category( "Gambits" )]
+    public class GambitListInfo : ScriptableObject {
 
-		public class GambitList : IInputSource {
+        [SerializeField]
+        private GambitInfo[] gambitInfos;
 
-			public IObservable<Vector3> moveInput { get; private set; }
+        public class GambitList : IInputSource, IDisposable {
 
-			public IReadOnlyReactiveProperty<object> targets { get; private set; }
+            public IObservable<Vector3> moveInput { get; private set; }
 
-			private IList<Gambit> gambits;
+            public IReadOnlyReactiveProperty<object> targets { get; private set; }
 
-			private GambitListInfo gambitListInfo;
+            private IList<Gambit> gambits;
 
-			public GambitList( GambitListInfo gambitListInfo ) {
+            private readonly GambitListInfo gambitListInfo;
 
-				this.gambitListInfo = gambitListInfo;
+            private IDisposable _disposable;
 
-				moveInput = new Subject<Vector3>();
-				targets = new ReactiveProperty<object>();
-			}
+            public GambitList( GambitListInfo gambitListInfo ) {
 
-			public void Initialize( Character character ) {
+                this.gambitListInfo = gambitListInfo;
 
-				this.gambits = gambitListInfo.gambitInfos.Select( _ => _.GetGambit( character ) ).ToArray();
-				
-				Observable.EveryUpdate().Subscribe( Tick );
-			}
+                moveInput = new Subject<Vector3>();
+                targets = new ReactiveProperty<object>();
+            }
 
-			private void Tick( long ticks ) {
+            public void Initialize( Character character ) {
 
-				gambits.FirstOrDefault( thatCan => thatCan.Execute() );
-			}
-		}
+                this.gambits = gambitListInfo.gambitInfos.Select( _ => _.GetGambit( character ) ).ToArray();
 
-		public GambitList GetGambitList() {
+                _disposable = Observable.EveryUpdate().Subscribe( Tick );
+            }
 
-			return new GambitList( this );
-		}
-	}
+            private void Tick( long ticks ) {
+
+                gambits.FirstOrDefault( thatCan => thatCan.Execute() );
+            }
+
+            public void Dispose() {
+
+                _disposable.Dispose();
+            }
+
+        }
+
+        public GambitList GetGambitList() {
+
+            return new GambitList( this );
+        }
+
+    }
+
 }

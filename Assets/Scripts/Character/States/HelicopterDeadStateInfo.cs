@@ -57,6 +57,8 @@ public class HelicopterDeadStateInfo : CharacterStateInfo {
                 character.itemToDrop.DropItem( character.pawn.transform );
             }
 
+            character.pawn.MakeDead();
+
             while ( true ) {
 
                 yield return null;
