@@ -39,7 +39,8 @@ public static class Helpers {
             }
         }
 
-        var affectedBuildings = Building.instances.Where( _ => _.sphereCollider.Intersects( point, radius ) );
+        var affectedBuildings = Building.instances.Where( _ => _.sphereCollider.Intersects( point, radius ) ).ToList();
+        affectedBuildings.Sort( ( a, b ) => ( a.transform.position - point ).magnitude.CompareTo( ( b.transform.position - point ).magnitude ) );
         foreach ( var each in affectedBuildings ) {
 
             each.Hit( amount );

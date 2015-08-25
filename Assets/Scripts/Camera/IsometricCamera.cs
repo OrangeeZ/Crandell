@@ -18,7 +18,7 @@ public class IsometricCamera : CameraBehaviour {
 
     private void OnBossDie( BossDeadStateInfo.Died obj ) {
 
-        //maxDistance += deathOffset;
+        new PMonad().Add( LerpToDistance() ).Execute();
     }
 
     private IEnumerable LerpToDistance() {
