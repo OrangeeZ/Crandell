@@ -1152,7 +1152,7 @@ MonoBehaviour:
   startingWeapon: {fileID: 11400000, guid: 9e0148989e31d4a9a9beb09789d007c2, type: 2}
   cameraBehaviour: {fileID: 0}
   itemToDrop: {fileID: 11400000, guid: 85a7a14dd881e4940a2782ee7ac76a38, type: 2}
-  dropProbability: .300000012
+  dropProbability: .200000003
   spawnInterval: 7
   spawnMoveSpeed: 5
   spawnMoveVector: {x: 1, y: .5}
