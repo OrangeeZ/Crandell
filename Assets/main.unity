@@ -2257,7 +2257,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1741446852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
+  m_Script: {fileID: 11500000, guid: 698894d4d78f34d3a97fb18831cc0f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 501ba95cecc7545cf98c168659a8ab4c, type: 2}
@@ -2265,10 +2265,7 @@ MonoBehaviour:
   startingWeapon: {fileID: 11400000, guid: 5adf5430be3ae4ed8a916993df78a650, type: 2}
   cameraBehaviour: {fileID: 0}
   itemToDrop: {fileID: 11400000, guid: 6d8219b2c6df1284983c1c2aded5d56e, type: 2}
-  dropProbability: .800000012
-  spawnInterval: 3
-  spawnMoveSpeed: 5
-  spawnMoveVector: {x: 1, y: -1}
+  dropProbability: .899999976
   activation:
     value: dangerLevel
   deactivation:
