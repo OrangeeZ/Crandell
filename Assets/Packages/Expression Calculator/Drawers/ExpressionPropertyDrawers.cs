@@ -1,19 +1,17 @@
 ﻿using UniRx;
-
 #if UNITY_EDITOR
-    using UnityEditor;
+using UnityEditor;
 #endif
-
 using UnityEngine;
 using System.Collections;
 
 namespace Expressions {
 
-#if UNITY_EDITOR
     public class CalculatorExpression : PropertyAttribute {
 
     }
 
+#if UNITY_EDITOR
     [CustomPropertyDrawer( typeof ( CalculatorExpression ) )]
     public class CalculatorExpressionPropertyDrawer : PropertyDrawer {
 

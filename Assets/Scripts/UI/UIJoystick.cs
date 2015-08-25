@@ -19,17 +19,21 @@ public class UIJoystick : AObject, IBeginDragHandler, IEndDragHandler, IDragHand
 
     public static UIJoystick instance { get; private set; }
 
-    [SerializeField] private Mode mode;
+    [SerializeField]
+    private Mode mode;
 
-    [SerializeField] private float radius = 5f;
+    [SerializeField]
+    private float radius = 5f;
 
-    [SerializeField] private float resetSpeed = 0.1f;
+    [SerializeField]
+    private float resetSpeed = 0.1f;
 
-    [SerializeField] private Transform root;
+    [SerializeField]
+    private Transform root;
 
     private bool isDragging;
 
-    void Start() {
+    private void Start() {
 
         instance = this;
     }
@@ -39,8 +43,7 @@ public class UIJoystick : AObject, IBeginDragHandler, IEndDragHandler, IDragHand
         if ( !isDragging ) {
 
             localPosition = Vector3.Lerp( localPosition, Vector3.zero, resetSpeed );
-        }
-        else {
+        } else {
 
             var currentVector = Vector3.ClampMagnitude( localPosition, radius );
             localPosition = currentVector;
@@ -50,16 +53,16 @@ public class UIJoystick : AObject, IBeginDragHandler, IEndDragHandler, IDragHand
     public Vector3 GetValue() {
 
 //#if UNITY_EDITOR || UNITY_STANDALONE_WIN 
-        if ( simulateInput ) {
+        //if ( simulateInput ) {
 
-            return alternativeMode ?
-                FormVector( Input.GetAxis( "Horizontal Alt" ), Input.GetAxis( "Vertical Alt" ) ):
-                FormVector( Input.GetAxis( "Horizontal" ), Input.GetAxis( "Vertical" ) );
-        }
+        var simulatedInput = alternativeMode ?
+            FormVector( Input.GetAxis( "Horizontal Alt" ), Input.GetAxis( "Vertical Alt" ) ) :
+            FormVector( Input.GetAxis( "Horizontal" ), Input.GetAxis( "Vertical" ) );
+        //}
 //#endif
         var result = Vector3.ClampMagnitude( ( position - root.position ) / radius, 1f );
 
-        return FormVector( result.x, result.y );
+        return FormVector( result.x, result.y ) + simulatedInput;
     }
 
     public void OnBeginDrag( PointerEventData eventData ) {
