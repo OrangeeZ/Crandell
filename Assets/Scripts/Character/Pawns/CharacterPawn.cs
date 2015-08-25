@@ -19,12 +19,6 @@ public class CharacterPawn : AObject {
 	protected virtual void Start() {
 
 	    animatedView = _animationController;
-
-	    //if ( animatedViewPrefab != null ) {
-
-	    //	animatedView = Instantiate( animatedViewPrefab );
-	    //	animatedView.transform.SetParent( transform, worldPositionStays: false );
-	    //}
 	}
 
 	public SphereSensor GetSphereSensor() {
