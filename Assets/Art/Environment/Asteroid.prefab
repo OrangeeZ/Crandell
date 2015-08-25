@@ -73,8 +73,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1000
-  _radius: 20
-  _startingHeight: 50
+  _radius: 60
+  _startingHeight: 40
   _weight: 50
 --- !u!1001 &100100000
 Prefab:
@@ -89,7 +89,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 033e90be79624b048b514f64e5570ea8, type: 2}
     - target: {fileID: 0}
       propertyPath: _startingHeight
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _weight
@@ -118,6 +118,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalRotation.w
       value: .999961913
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: _radius
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -1,10 +1,15 @@
 ﻿using System.Collections;
+using Packages.EventSystem;
 using UniRx;
 using UnityEngine;
 using UnityEngine.ScriptableObjectWizard;
 
 [Category( "Character states" )]
 public class BossDeadStateInfo : CharacterStateInfo {
+
+    public struct Died : IEventBase {
+
+    }
 
     [SerializeField]
     private Asteroid _asteroidPrefab;
@@ -57,6 +62,8 @@ public class BossDeadStateInfo : CharacterStateInfo {
             character.pawn.MakeDead();
 
             Instantiate( typedInfo._asteroidPrefab, character.pawn.position, character.pawn.rotation );
+
+            EventSystem.RaiseEvent( new Died() );
 
             while ( CanBeSet() ) {
 

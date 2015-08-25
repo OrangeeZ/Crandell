@@ -12,10 +12,10 @@ public class UIJoystick : AObject, IBeginDragHandler, IEndDragHandler, IDragHand
 
     }
 
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN
+//#if UNITY_EDITOR || UNITY_STANDALONE_WIN
     public bool simulateInput = true;
     public bool alternativeMode = true;
-#endif
+//#endif
 
     public static UIJoystick instance { get; private set; }
 
@@ -49,14 +49,14 @@ public class UIJoystick : AObject, IBeginDragHandler, IEndDragHandler, IDragHand
 
     public Vector3 GetValue() {
 
-#if UNITY_EDITOR || UNITY_STANDALONE_WIN 
+//#if UNITY_EDITOR || UNITY_STANDALONE_WIN 
         if ( simulateInput ) {
 
             return alternativeMode ?
                 FormVector( Input.GetAxis( "Horizontal Alt" ), Input.GetAxis( "Vertical Alt" ) ):
                 FormVector( Input.GetAxis( "Horizontal" ), Input.GetAxis( "Vertical" ) );
         }
-#endif
+//#endif
         var result = Vector3.ClampMagnitude( ( position - root.position ) / radius, 1f );
 
         return FormVector( result.x, result.y );

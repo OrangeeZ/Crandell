@@ -1,20 +1,50 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Packages.EventSystem;
+using UniRx;
 
 public class IsometricCamera : CameraBehaviour {
 
-	public float maxDistance = 5f;
+    public float deathOffset = 10;
 
-	public float followTimeNormalized = 0.5f;
+    public float maxDistance = 5f;
 
-	protected override void UpdateCamera() {
+    public float followTimeNormalized = 0.5f;
 
-		var offset = transform.position - target.position;
-		var clampedOffset = Vector3.ClampMagnitude( offset, maxDistance );
+    private void Start() {
 
-		transform.position += clampedOffset - offset;
+        EventSystem.Events.SubscribeOfType<BossDeadStateInfo.Died>( OnBossDie );
+    }
 
-		transform.position = Vector3.Lerp( transform.position, target.position, followTimeNormalized * Time.deltaTime );
+    private void OnBossDie( BossDeadStateInfo.Died obj ) {
+
+        //maxDistance += deathOffset;
+    }
+
+    private IEnumerable LerpToDistance() {
+
+        var timer = new AutoTimer( 1f );
+
+        var from = transform.localPosition;
+        var to = transform.localPosition + Vector3.up * deathOffset;
+
+        while ( timer.ValueNormalized < 1f ) {
+
+            transform.localPosition = Vector3.Lerp( from, to, timer.ValueNormalized );
+
+            yield return null;
+        }
+    }
+
+    protected override void UpdateCamera() {
+
+        var offset = transform.position - target.position;
+        var clampedOffset = Vector3.ClampMagnitude( offset, maxDistance );
+
+        transform.position += clampedOffset - offset;
+
+        transform.position = Vector3.Lerp( transform.position, target.position, followTimeNormalized * Time.deltaTime );
         transform.rotation = Quaternion.Lerp( transform.rotation, target.rotation, followTimeNormalized * Time.deltaTime );
-	}
+    }
+
 }
