@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5c6add67d6f4645bba6aa7c2e33249, type: 3}
+  m_Name: Boss
+  m_EditorClassIdentifier: 
+  statusInfo: {fileID: 11400000, guid: 5924903500bfb21419b0656bb3c43980, type: 2}
+  statExpressionsInfo: {fileID: 11400000, guid: 0cfd114899d084c66bddf3a18863ee95,
+    type: 2}
+  stateControllerInfo: {fileID: 11400000, guid: cc21519a2b85b254d917d68bb9e6921f,
+    type: 2}
+  weaponStateControllerInfo: {fileID: 11400000, guid: 9b6c4a2e8d5a93049802030a80c64b9f,
+    type: 2}
+  pawnPrefab: {fileID: 11413862, guid: df5273e85fb3f4526b91121ec7196595, type: 2}
+  gambitListInfo: {fileID: 11400000, guid: dc53b2ff0d49cb24dac9137dfb40ea4e, type: 2}
+  teamId: 1
+  hasInput: 0
+  applyColor: 1
