@@ -92,16 +92,16 @@ MonoBehaviour:
   lifetime: .0500000007
   weight: 1
   childProjectiles:
-  - {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df, type: 2}
-  - {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df, type: 2}
-  - {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df, type: 2}
-  - {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df, type: 2}
-  - {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df, type: 2}
-  - {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df, type: 2}
-  - {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df, type: 2}
-  - {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df, type: 2}
-  - {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df, type: 2}
-  - {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df, type: 2}
+  - {fileID: 11485336, guid: 74e76d113ce464f9ab78d2fc0e778d98, type: 2}
+  - {fileID: 11485336, guid: 74e76d113ce464f9ab78d2fc0e778d98, type: 2}
+  - {fileID: 11485336, guid: 74e76d113ce464f9ab78d2fc0e778d98, type: 2}
+  - {fileID: 11485336, guid: 74e76d113ce464f9ab78d2fc0e778d98, type: 2}
+  - {fileID: 11485336, guid: 74e76d113ce464f9ab78d2fc0e778d98, type: 2}
+  - {fileID: 11485336, guid: 74e76d113ce464f9ab78d2fc0e778d98, type: 2}
+  - {fileID: 11485336, guid: 74e76d113ce464f9ab78d2fc0e778d98, type: 2}
+  - {fileID: 11485336, guid: 74e76d113ce464f9ab78d2fc0e778d98, type: 2}
+  - {fileID: 11485336, guid: 74e76d113ce464f9ab78d2fc0e778d98, type: 2}
+  - {fileID: 11485336, guid: 74e76d113ce464f9ab78d2fc0e778d98, type: 2}
   maxDisplacement: .5
   damageScale: 1
 --- !u!135 &13566852
@@ -146,22 +146,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: childProjectiles.Array.data[3]
       value: 
-      objectReference: {fileID: 11485336, guid: 0279e86c0ddf9454ba983488188b970e,
+      objectReference: {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df,
         type: 2}
     - target: {fileID: 0}
       propertyPath: childProjectiles.Array.data[4]
       value: 
-      objectReference: {fileID: 11485336, guid: 0279e86c0ddf9454ba983488188b970e,
+      objectReference: {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df,
         type: 2}
     - target: {fileID: 0}
       propertyPath: childProjectiles.Array.data[5]
       value: 
-      objectReference: {fileID: 11485336, guid: 0279e86c0ddf9454ba983488188b970e,
+      objectReference: {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df,
         type: 2}
     - target: {fileID: 0}
       propertyPath: childProjectiles.Array.data[0]
       value: 
-      objectReference: {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df,
+      objectReference: {fileID: 11485336, guid: 74e76d113ce464f9ab78d2fc0e778d98,
         type: 2}
     - target: {fileID: 0}
       propertyPath: childProjectiles.Array.data[1]
@@ -201,6 +201,26 @@ Prefab:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: childProjectiles.Array.data[6]
+      value: 
+      objectReference: {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: childProjectiles.Array.data[7]
+      value: 
+      objectReference: {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: childProjectiles.Array.data[8]
+      value: 
+      objectReference: {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: childProjectiles.Array.data[9]
+      value: 
+      objectReference: {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 197418}

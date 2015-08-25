@@ -551,7 +551,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!1 &268865428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,7 +1187,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!114 &751528910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1209,7 +1209,7 @@ MonoBehaviour:
   spawnMoveSpeed: 5
   spawnMoveVector: {x: 1, y: .5}
   activation:
-    value: dangerLevel - 50
+    value: dangerLevel - 20
   deactivation:
     value: dangerLevel - 1000
 --- !u!1 &818907201
@@ -1291,6 +1291,58 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 818907201}
+--- !u!1 &845531017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 845531019}
+  - 114: {fileID: 845531018}
+  m_Layer: 0
+  m_Name: SpawnTankTriplePew (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &845531018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 845531017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af7877ec42364b078dbcf64e3dd4eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterInfo: {fileID: 11400000, guid: bcf12e17578bf7747b1f4ccf511fbd3c, type: 2}
+  startingItems: []
+  startingWeapon: {fileID: 11400000, guid: f1523a52c882b474a991693603bd9ad5, type: 2}
+  cameraBehaviour: {fileID: 0}
+  itemToDrop: {fileID: 11400000, guid: 14597730de9af4a8c89e6befa5bc2100, type: 2}
+  dropProbability: .400000006
+  spawnInterval: 2
+  spawnMoveSpeed: 5
+  spawnMoveVector: {x: 1, y: 1}
+  activation:
+    value: dangerLevel - 5
+  deactivation:
+    value: dangerLevel - 2000
+--- !u!4 &845531019
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 845531017}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 28.5300007, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &846483590
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,7 +1460,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!1 &932191947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,7 +2062,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
 --- !u!1 &1330354463
 GameObject:
   m_ObjectHideFlags: 0
@@ -2044,7 +2096,7 @@ MonoBehaviour:
   cameraBehaviour: {fileID: 0}
   itemToDrop: {fileID: 11400000, guid: 14597730de9af4a8c89e6befa5bc2100, type: 2}
   dropProbability: .400000006
-  spawnInterval: 3.5
+  spawnInterval: 2
   spawnMoveSpeed: 5
   spawnMoveVector: {x: 1, y: .5}
   activation:
@@ -2062,7 +2114,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!1 &1669259470
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,7 +2334,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!1 &1741446852
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,9 +2364,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterInfo: {fileID: 11400000, guid: 501ba95cecc7545cf98c168659a8ab4c, type: 2}
   startingItems: []
-  startingWeapon: {fileID: 11400000, guid: 5adf5430be3ae4ed8a916993df78a650, type: 2}
+  startingWeapon: {fileID: 11400000, guid: 85a7a14dd881e4940a2782ee7ac76a38, type: 2}
   cameraBehaviour: {fileID: 0}
-  itemToDrop: {fileID: 11400000, guid: 6d8219b2c6df1284983c1c2aded5d56e, type: 2}
+  itemToDrop: {fileID: 11400000, guid: 85a7a14dd881e4940a2782ee7ac76a38, type: 2}
   dropProbability: .899999976
   activation:
     value: dangerLevel - 250
@@ -2674,7 +2726,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
 --- !u!1 &1987674282
 GameObject:
   m_ObjectHideFlags: 0
