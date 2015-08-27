@@ -14,4 +14,4 @@ MonoBehaviour:
   healthExpression:
     value: 1
   moveSpeedExpression:
-    value: 5
+    value: 8

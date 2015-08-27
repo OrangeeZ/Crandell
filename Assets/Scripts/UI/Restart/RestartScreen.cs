@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using Packages.EventSystem;
 using UnityEngine.UI;
 
 public class RestartScreen : UIScreen {
@@ -19,6 +20,8 @@ public class RestartScreen : UIScreen {
             
             each.Dispose();
         }
+
+        EventSystem.Reset();
 
         GameplayController.instance.dangerLevel.Value = 0;
 

@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.Xml.Linq;
 using UnityEngine.EventSystems;
 
 public class UIJoystick : AObject, IBeginDragHandler, IEndDragHandler, IDragHandler {

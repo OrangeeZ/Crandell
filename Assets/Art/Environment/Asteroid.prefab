@@ -74,7 +74,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 1000
   _radius: 60
-  _startingHeight: 40
+  _startingHeight: 60
   _weight: 50
 --- !u!1001 &100100000
 Prefab:
@@ -89,7 +89,7 @@ Prefab:
       objectReference: {fileID: 2100000, guid: 033e90be79624b048b514f64e5570ea8, type: 2}
     - target: {fileID: 0}
       propertyPath: _startingHeight
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: _weight

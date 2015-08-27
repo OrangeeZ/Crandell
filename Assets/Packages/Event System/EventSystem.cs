@@ -8,6 +8,11 @@ namespace Packages.EventSystem {
 
 		public static Subject<IEventBase> Events = new Subject<IEventBase>();
 
+	    public static void Reset() {
+	        
+            Events = new Subject<IEventBase>();
+	    }
+
 		public static void RaiseEvent( IEventBase raisedEvent ) {
 			
 			Events.OnNext( raisedEvent );

@@ -878,7 +878,7 @@ MonoBehaviour:
   startingWeapon: {fileID: 11400000, guid: 5adf5430be3ae4ed8a916993df78a650, type: 2}
   cameraBehaviour: {fileID: 0}
   itemToDrop: {fileID: 11400000, guid: 6d8219b2c6df1284983c1c2aded5d56e, type: 2}
-  dropProbability: .5
+  dropProbability: .699999988
   spawnInterval: 2
   spawnMoveSpeed: 5
   spawnMoveVector: {x: 1, y: .5}
@@ -961,6 +961,7 @@ GameObject:
   - 23: {fileID: 727266258}
   - 114: {fileID: 727266262}
   - 82: {fileID: 727266263}
+  - 114: {fileID: 727266264}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Untagged
@@ -1108,6 +1109,19 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &727266264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 727266257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e953a92a018c54ad1bcd3759d73483ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundtrack: {fileID: 8300000, guid: 3eca9db031b544c3aae1b7d2f1c978e4, type: 3}
+  endgameSoundtrack: {fileID: 8300000, guid: c73fe2a6ef9c1b142846cb4fdd486a48, type: 3}
 --- !u!1 &751528907
 GameObject:
   m_ObjectHideFlags: 0

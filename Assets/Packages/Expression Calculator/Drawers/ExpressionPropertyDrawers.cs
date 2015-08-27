@@ -7,125 +7,127 @@ using System.Collections;
 
 namespace Expressions {
 
-    public class CalculatorExpression : PropertyAttribute {
+	public class CalculatorExpression : PropertyAttribute {
 
-    }
+	}
 
 #if UNITY_EDITOR
-    [CustomPropertyDrawer( typeof ( CalculatorExpression ) )]
-    public class CalculatorExpressionPropertyDrawer : PropertyDrawer {
+	[CustomPropertyDrawer( typeof ( CalculatorExpression ) )]
+	public class CalculatorExpressionPropertyDrawer : PropertyDrawer {
 
-        private const int resultStringSize = 70;
+		private const int resultStringSize = 70;
 
-        public override void OnGUI( Rect rect, SerializedProperty property, GUIContent label ) {
+		public override void OnGUI( Rect rect, SerializedProperty property, GUIContent label ) {
 
-            var calculator = new Calculator();
+			var calculator = new Calculator();
 
-            var result = 0d;
-            var isValid = true;
+			var result = 0d;
+			var isValid = true;
 
-            try {
+			try {
 
-                result = calculator.Evaluate( GetStringValue( property ) );
-            }
-            catch {
+				result = calculator.Evaluate( GetStringValue( property ) );
+			}
+			catch {
 
-                isValid = false;
-            }
+				isValid = false;
+			}
 
-            var resultString = string.Format( " = {0}", result );
+			var resultString = string.Format( " = {0}", result );
 
-            GUI.color = isValid ? Color.white : Color.red;
+			GUI.color = isValid ? Color.white : Color.red;
 
-            var contentPosition = EditorGUI.PrefixLabel( rect, label );
-            contentPosition.width -= resultStringSize;
+			var contentPosition = EditorGUI.PrefixLabel( rect, label );
+			contentPosition.width -= resultStringSize;
 
-            SetStringValue( property, EditorGUI.TextField( contentPosition, GetStringValue( property ) ) );
+			SetStringValue( property, EditorGUI.TextField( contentPosition, GetStringValue( property ) ) );
 
-            GUI.color = Color.white;
+			GUI.color = Color.white;
 
-            contentPosition.x += contentPosition.width;
-            contentPosition.width = resultStringSize;
+			contentPosition.x += contentPosition.width;
+			contentPosition.width = resultStringSize;
 
-            EditorGUI.LabelField( contentPosition, resultString );
-        }
+			EditorGUI.LabelField( contentPosition, resultString );
+		}
 
-        private string GetStringValue( SerializedProperty property ) {
+		private string GetStringValue( SerializedProperty property ) {
 
-            var targetValue = fieldInfo.GetValue( property.serializedObject.targetObject );
+			var targetValue = fieldInfo.GetValue( property.serializedObject.targetObject );
 
-            if ( targetValue is string ) {
+			if ( targetValue is string ) {
 
-                return property.stringValue;
-            }
+				return property.stringValue;
+			}
 
-            if ( targetValue is IReactiveProperty<string> ) {
+			if ( targetValue is IReactiveProperty<string> ) {
 
-                return ( targetValue as IReactiveProperty<string> ).Value;
-            }
+				return property.FindPropertyRelative( "value" ).stringValue;
+			}
 
-            return "Unsupported value";
-        }
+			return "Unsupported value";
+		}
 
-        private void SetStringValue( SerializedProperty property, string value ) {
+		private void SetStringValue( SerializedProperty property, string value ) {
 
-            var targetValue = fieldInfo.GetValue( property.serializedObject.targetObject );
+			var targetValue = fieldInfo.GetValue( property.serializedObject.targetObject );
 
-            if ( targetValue is string ) {
+			if ( targetValue is string ) {
 
-                property.stringValue = value;
-            }
+				property.stringValue = value;
+			}
 
-            if ( targetValue is IReactiveProperty<string> ) {
+			if ( targetValue is IReactiveProperty<string> ) {
 
-                ( targetValue as IReactiveProperty<string> ).Value = value;
-            }
-        }
+				property.FindPropertyRelative( "value" ).stringValue = value;
+			}
 
-    }
+			property.serializedObject.ApplyModifiedProperties();
+		}
 
-    [CustomPropertyDrawer( typeof ( ReactiveCalculator ) )]
-    public class ReactiveCalculatorPropertyDrawer : PropertyDrawer {
+	}
 
-        private const int resultStringSize = 70;
+	[CustomPropertyDrawer( typeof ( ReactiveCalculator ) )]
+	public class ReactiveCalculatorPropertyDrawer : PropertyDrawer {
 
-        public override void OnGUI( Rect rect, SerializedProperty property, GUIContent label ) {
+		private const int resultStringSize = 70;
 
-            property.serializedObject.Update();
+		public override void OnGUI( Rect rect, SerializedProperty property, GUIContent label ) {
 
-            var targetObject = property.serializedObject.targetObject;
-            var target = fieldInfo.GetValue( targetObject ) as ReactiveCalculator;
+			property.serializedObject.Update();
 
-            var result = target.Result.Value;
-            var resultString = string.Format( " = {0}", result );
+			var targetObject = property.serializedObject.targetObject;
+			var target = fieldInfo.GetValue( targetObject ) as ReactiveCalculator;
 
-            GUI.color = target.IsValid ? Color.white : Color.red;
+			var result = target.Result.Value;
+			var resultString = string.Format( " = {0}", result );
 
-            var contentPosition = EditorGUI.PrefixLabel( rect, label );
-            contentPosition.width -= resultStringSize;
+			GUI.color = target.IsValid ? Color.white : Color.red;
 
-            UpdateDirtyProperties( target, property );
+			var contentPosition = EditorGUI.PrefixLabel( rect, label );
+			contentPosition.width -= resultStringSize;
 
-            target.Expression = EditorGUI.TextField( contentPosition, target.Expression );
+			UpdateDirtyProperties( target, property );
 
-            GUI.color = Color.white;
+			target.Expression = EditorGUI.TextField( contentPosition, target.Expression );
 
-            contentPosition.x += contentPosition.width;
-            contentPosition.width = resultStringSize;
+			GUI.color = Color.white;
 
-            EditorGUI.LabelField( contentPosition, resultString );
-        }
+			contentPosition.x += contentPosition.width;
+			contentPosition.width = resultStringSize;
 
-        private void UpdateDirtyProperties( ReactiveCalculator target, SerializedProperty property ) {
+			EditorGUI.LabelField( contentPosition, resultString );
+		}
 
-            var currentValue = target.Expression;
-            property.FindPropertyRelative( "_expression" ).stringValue = "";
-            property.FindPropertyRelative( "_expression" ).stringValue = currentValue;
+		private void UpdateDirtyProperties( ReactiveCalculator target, SerializedProperty property ) {
 
-            property.serializedObject.ApplyModifiedProperties();
-        }
+			var currentValue = target.Expression;
+			property.FindPropertyRelative( "_expression" ).stringValue = "";
+			property.FindPropertyRelative( "_expression" ).stringValue = currentValue;
 
-    }
+			property.serializedObject.ApplyModifiedProperties();
+		}
+
+	}
 
 #endif
 }

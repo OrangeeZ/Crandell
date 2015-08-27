@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: Stats
   m_EditorClassIdentifier: 
   healthExpression:
-    value: 1
+    value: 3
   moveSpeedExpression:
     value: 10

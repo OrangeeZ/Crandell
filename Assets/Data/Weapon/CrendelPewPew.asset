@@ -20,7 +20,7 @@ MonoBehaviour:
   attackRange: 30
   slotType: 0
   _damageExpression:
-    value: 1
+    value: 2
   _projectilePrefab: {fileID: 11485336, guid: b1609853cf2694387b3735c5d1e963df, type: 2}
   _projectileSpeed: 30
   _clipSize: 3

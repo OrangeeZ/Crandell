@@ -265,9 +265,9 @@ MonoBehaviour:
   previewScale: {x: 1, y: 1, z: 1}
   movementScale: 0
   rotationScale: 1
-  maxVelocity: 8
+  maxVelocity: 5
   minVelocity: .100000001
-  velocityScale: .375
+  velocityScale: .100000001
   softZDistance: .00499999989
   velocityDownsample: 1
   excludeLayers:
@@ -315,6 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5969ca15426e5040911585c80393826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathOffset: 10
   maxDistance: 5
   followTimeNormalized: 5
 --- !u!114 &11484066
@@ -410,6 +411,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalPosition.z
       value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: velocityScale
+      value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: maxVelocity
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
