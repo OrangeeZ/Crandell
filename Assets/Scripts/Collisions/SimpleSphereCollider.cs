@@ -1,140 +1,140 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using System.Collections;
-using Object = UnityEngine.Object;
 
 public class SimpleSphereCollider : MonoBehaviour {
 
-    public float radius = 1f;
+	public float radius = 1f;
 
-    public Object userData;
+	private Vector3 _previousPosition;
 
-    private Vector3 previousPosition;
+	public Vector3 CalculatePunishingForce( SimpleSphereCollider otherCollider ) {
 
-    public Vector3 CalculatePunishingForce( SimpleSphereCollider otherCollider ) {
+		var deltaVector = otherCollider.transform.position - transform.position;
+		var maxDistance = otherCollider.radius + radius;
 
-        var deltaVector = otherCollider.transform.position - transform.position;
-        var maxDistance = otherCollider.radius + radius;
+		if ( deltaVector.x > maxDistance || deltaVector.y > maxDistance || deltaVector.z > maxDistance ) {
 
-        if ( deltaVector.x >= maxDistance || deltaVector.y >= maxDistance || deltaVector.z >= maxDistance ) {
+			return Vector3.zero;
+		}
 
-            return Vector3.zero;
-        }
+		var intersectionAmount = deltaVector.magnitude;
 
-        var intersectionAmount = deltaVector.magnitude;
+		if ( intersectionAmount > maxDistance ) {
 
-        var intersectionDirection = deltaVector / intersectionAmount;
+			return Vector3.zero;
+		}
 
-        return intersectionDirection * ( maxDistance - intersectionAmount ).Clamped( 0, float.MaxValue );
-    }
+		var intersectionDirection = deltaVector / intersectionAmount;
 
-    public bool Intersects( SimpleSphereCollider otherCollider ) {
+		return intersectionDirection * ( maxDistance - intersectionAmount );
+	}
 
-        if ( !otherCollider.enabled ) {
+	public bool Intersects( SimpleSphereCollider otherCollider ) {
 
-            return false;
-        }
+		if ( !otherCollider.enabled ) {
 
-        return IntersectsInternal( transform.position, radius, otherCollider.transform.position, otherCollider.radius );
-    }
+			return false;
+		}
 
-    public bool Intersects( Vector3 otherPosition, float otherRadius ) {
+		return IntersectsInternal( transform.position, radius, otherCollider.transform.position, otherCollider.radius );
+	}
 
-        return IntersectsInternal( transform.position, radius, otherPosition, otherRadius );
-    }
+	public bool Intersects( Vector3 otherPosition, float otherRadius ) {
 
-    public SimpleSphereCollider IntersectsContinuous( IEnumerable<SimpleSphereCollider> otherColliders ) {
+		return IntersectsInternal( transform.position, radius, otherPosition, otherRadius );
+	}
 
-        var from = previousPosition;
-        var to = transform.position;
+	public SimpleSphereCollider IntersectsContinuous( IEnumerable<SimpleSphereCollider> otherColliders ) {
 
-        var interpolationStep = radius * 0.5f;
-        var steps = Mathf.CeilToInt( ( to - from ).magnitude / interpolationStep );
+		var from = _previousPosition;
+		var to = transform.position;
 
-        steps = Mathf.Max( steps, 1 );
+		var interpolationStep = radius * 0.5f;
+		var steps = Mathf.CeilToInt( ( to - from ).magnitude / interpolationStep );
 
-        var currentPosition = from;
+		steps = Mathf.Max( steps, 1 );
 
-        for ( var i = 0; i < steps; i++ ) {
+		var currentPosition = from;
 
-            foreach ( var each in otherColliders.Where( each => each.enabled ) ) {
+		for ( var i = 0; i < steps; i++ ) {
 
-                if ( IntersectsInternal( currentPosition, radius, each.transform.position, each.radius ) ) {
+			foreach ( var each in otherColliders.Where( each => each.enabled ) ) {
 
-                    return each;
-                }
-            }
+				if ( IntersectsInternal( currentPosition, radius, each.transform.position, each.radius ) ) {
 
-            currentPosition = Vector3.MoveTowards( currentPosition, to, interpolationStep );
-        }
+					return each;
+				}
+			}
 
-        return null;
-    }
+			currentPosition = Vector3.MoveTowards( currentPosition, to, interpolationStep );
+		}
 
-    public SimpleCapsuleCollider IntersectsContinuous( IEnumerable<SimpleCapsuleCollider> otherColliders ) {
+		return null;
+	}
 
-        var from = previousPosition;
-        var to = transform.position;
+	public SimpleCapsuleCollider IntersectsContinuous( IEnumerable<SimpleCapsuleCollider> otherColliders ) {
 
-        var interpolationStep = radius * 0.5f;
-        var steps = Mathf.CeilToInt( ( to - from ).magnitude / interpolationStep );
+		var from = _previousPosition;
+		var to = transform.position;
 
-        steps = Mathf.Max( steps, 1 );
+		var interpolationStep = radius * 0.5f;
+		var steps = Mathf.CeilToInt( ( to - from ).magnitude / interpolationStep );
 
-        var currentPosition = from;
+		steps = Mathf.Max( steps, 1 );
 
-        for ( var i = 0; i < steps; i++ ) {
+		var currentPosition = from;
 
-            foreach ( var each in otherColliders.Where( each => each.enabled ) ) {
+		for ( var i = 0; i < steps; i++ ) {
 
-                if ( each.Intersects( this ) ) {
+			foreach ( var each in otherColliders.Where( each => each.enabled ) ) {
 
-                    return each;
-                }
-            }
+				if ( each.Intersects( this ) ) {
 
-            currentPosition = Vector3.MoveTowards( currentPosition, to, interpolationStep );
-        }
+					return each;
+				}
+			}
 
-        return null;
-    }
+			currentPosition = Vector3.MoveTowards( currentPosition, to, interpolationStep );
+		}
 
-    public IEnumerable<SimpleSphereCollider> IntersectsMany( IEnumerable<SimpleSphereCollider> otherColliders ) {
+		return null;
+	}
 
-        return otherColliders.Where( each => each != null ).Where( Intersects );
-    }
+	public IEnumerable<SimpleSphereCollider> IntersectsMany( IEnumerable<SimpleSphereCollider> otherColliders ) {
 
-    private bool IntersectsInternal( Vector3 thisPosition, float thisRadius, Vector3 otherPosition, float otherRadius ) {
+		return otherColliders.Where( each => each != null ).Where( Intersects );
+	}
 
-        return ( thisPosition - otherPosition ).sqrMagnitude <= ( Mathf.Pow( thisRadius + otherRadius, 2 ) );
-    }
+	private bool IntersectsInternal( Vector3 thisPosition, float thisRadius, Vector3 otherPosition, float otherRadius ) {
 
-    private void LateUpdate() {
+		return ( thisPosition - otherPosition ).sqrMagnitude <= ( Mathf.Pow( thisRadius + otherRadius, 2 ) );
+	}
 
-        previousPosition = transform.position;
-    }
+	private void LateUpdate() {
 
-    private void OnDrawGizmos() {
+		_previousPosition = transform.position;
+	}
 
-        var from = previousPosition;
-        var to = transform.position;
+	private void OnDrawGizmos() {
 
-        var interpolationStep = radius * 0.5f;
-        var steps = Mathf.CeilToInt( ( to - from ).magnitude / interpolationStep );
+		var from = _previousPosition;
+		var to = transform.position;
 
-        steps = Mathf.Max( steps, 1 );
+		var interpolationStep = radius * 0.5f;
+		var steps = Mathf.CeilToInt( ( to - from ).magnitude / interpolationStep );
 
-        var currentPosition = from;
+		steps = Mathf.Max( steps, 1 );
 
-        for ( var i = 0; i < steps; i++ ) {
+		var currentPosition = from;
 
-            Debug.DrawLine( currentPosition, ( currentPosition = Vector3.MoveTowards( currentPosition, to, interpolationStep ) ) * 0.9f );
-        }
+		for ( var i = 0; i < steps; i++ ) {
 
-        Gizmos.DrawWireSphere( transform.position, radius );
-        //Gizmos.DrawRay( transform.position, normal );
-    }
+			Debug.DrawLine( currentPosition, ( currentPosition = Vector3.MoveTowards( currentPosition, to, interpolationStep ) ) * 0.9f );
+		}
+
+		Gizmos.DrawWireSphere( transform.position, radius );
+		//Gizmos.DrawRay( transform.position, normal );
+	}
 
 }

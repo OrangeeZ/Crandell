@@ -14,6 +14,11 @@ public static class VectorExtensions {
         return new Vector3( self.x, 0, self.y );
     }
 
+	public static Vector3 ClampMagnitude( this Vector3 self, float maxLength ) {
+
+		return Vector3.ClampMagnitude( self, maxLength );
+	}
+
     public static Vector3 Set( this Vector3 self, float x = float.NaN, float y = float.NaN, float z = float.NaN ) {
 
         self.x = x.IsNan() ? self.x : x;
