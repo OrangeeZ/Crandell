@@ -38,19 +38,12 @@ public class ItemInfo : ScriptableObject {
 
     public Color color;
 
-    //public virtual void Apply( Character target ) {
-
-    //	throw new NotImplementedException();
-    //}
-
     public virtual Item GetItem() {
 
         throw new NotImplementedException();
     }
 
     public void DropItem( Transform transform ) {
-
-        Debug.Log( transform );
 
         var item = GetItem();
 

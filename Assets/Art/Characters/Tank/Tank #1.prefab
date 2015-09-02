@@ -63,7 +63,7 @@ GameObject:
   - 135: {fileID: 13513820}
   - 114: {fileID: 11481190}
   m_Layer: 0
-  m_Name: 'Enemy #2'
+  m_Name: 'Tank #1'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,13 +282,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensor: {fileID: 11485918}
-  animatedViewPrefab: {fileID: 0}
+  _animationController: {fileID: 0}
   canFollowDestination: 0
   turret: {fileID: 187690}
   _weight: 1
   _startingHeight: 0
   _rotationToDirectionSpeed: 100
   _sphereCollider: {fileID: 11481190}
+  _subTransform: {fileID: 0}
 --- !u!114 &11481190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -301,7 +302,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 1
-  userData: {fileID: 0}
 --- !u!114 &11485918
 MonoBehaviour:
   m_ObjectHideFlags: 1
