@@ -721,7 +721,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crowdController: {fileID: 1614883678}
   prefab: {fileID: 348271008}
-  amount: 50
+  amount: 500
   radius: 5
 --- !u!1001 &1668732198
 Prefab:

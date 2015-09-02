@@ -10,14 +10,14 @@ public class CrowdController : MonoBehaviour {
 
 	[SerializeField]
 	private List<CrowdElement> _crowdElements = new List<CrowdElement>();
-
+	
 	private void Reset() {
 
 		//this.GetComponentsInChildren( out _crowdElements );
 	}
 
 	public void AddElement( CrowdElement element ) {
-		
+
 		_crowdElements.Add( element );
 	}
 
@@ -26,10 +26,10 @@ public class CrowdController : MonoBehaviour {
 		foreach ( var each in _crowdElements ) {
 
 			var direction = ( _target.position - each.transform.position ).ClampMagnitude( 1f );
-
+			
 			each.transform.position += direction * Time.deltaTime * 5f;
 		}
-
+		
 		foreach ( var each in _crowdElements ) {
 
 			ApplyPunishingForce( each );
@@ -39,8 +39,8 @@ public class CrowdController : MonoBehaviour {
 	private void ApplyPunishingForce( CrowdElement crowdElement ) {
 
 		var force = _crowdElements
-			.Where( _ => _ != crowdElement )
-			.Where( _=>_.CompareHash( crowdElement ) )
+			.Where( _ => 1f.Random() > 0.9f )
+			.Where( _ => _.CompareHash( crowdElement ) )
 			.Select( _ => _.sphereCollider )
 			.Concat( Building.instances.Select( _ => _.sphereCollider ) )
 			.Select( _ => _.CalculatePunishingForce( crowdElement.sphereCollider ) )
@@ -48,10 +48,4 @@ public class CrowdController : MonoBehaviour {
 
 		crowdElement.transform.position += force.Set( y: 0 );
 	}
-
-	private void Advance( PlanetSurfaceTransform crowdElement, Vector3 delta ) {
-
-		//crowdElement.Move(  );
-	}
-
 }

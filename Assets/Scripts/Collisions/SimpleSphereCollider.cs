@@ -25,6 +25,11 @@ public class SimpleSphereCollider : MonoBehaviour {
 			return Vector3.zero;
 		}
 
+		if ( intersectionAmount == 0f ) {
+
+			intersectionAmount = Random.Range( -Time.deltaTime, Time.deltaTime );
+		}
+
 		var intersectionDirection = deltaVector / intersectionAmount;
 
 		return intersectionDirection * ( maxDistance - intersectionAmount );

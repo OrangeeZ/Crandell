@@ -14,7 +14,7 @@ public class CrowdElement : MonoBehaviour {
 
 		_transform = transform;
 	}
-
+	
 	public void Move( Vector3 direction, float speed ) {
 
 		_planetTransform.Move( _transform, direction, speed );
