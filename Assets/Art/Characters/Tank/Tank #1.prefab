@@ -43,6 +43,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 430994}
+  - 95: {fileID: 9581656}
+  - 114: {fileID: 11479080}
   m_Layer: 0
   m_Name: tank1 (1)
   m_TagString: Untagged
@@ -270,6 +272,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &9581656
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164722}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d02dfce196918d745b87265cf7805549, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11413862
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -282,7 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensor: {fileID: 11485918}
-  _animationController: {fileID: 0}
+  _animationController: {fileID: 11479080}
   canFollowDestination: 0
   turret: {fileID: 187690}
   _weight: 1
@@ -290,6 +309,19 @@ MonoBehaviour:
   _rotationToDirectionSpeed: 100
   _sphereCollider: {fileID: 11481190}
   _subTransform: {fileID: 0}
+--- !u!114 &11479080
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92748a4eccde1d1438ca6b9e1588b6b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animators:
+  - {fileID: 9581656}
 --- !u!114 &11481190
 MonoBehaviour:
   m_ObjectHideFlags: 1

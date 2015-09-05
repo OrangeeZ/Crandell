@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff4b1afa80f0b145a6f9ccf2bf9c62f, type: 3}
   m_Name: State Controller
   m_EditorClassIdentifier: 
+  updateAnimation: 1
   isDebug: 0
   entries:
   - stateInfo: {fileID: 11400000, guid: 543cb030f09b7fb47bf833aee14c582b, type: 2}
