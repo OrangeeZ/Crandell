@@ -71,8 +71,8 @@ public class Projectile : MonoBehaviour {
     private void OnTriggerEnter( Collider other ) {
 
         var otherPawn = other.GetComponent<CharacterPlanetPawn>();
-
-        if ( otherPawn != null && otherPawn != owner.pawn && otherPawn.character.teamId != owner.teamId ) {
+        
+        if ( otherPawn != null && otherPawn != owner.pawn && otherPawn.character != null && otherPawn.character.teamId != owner.teamId ) {
 
             otherPawn.character.health.Value -= 1;
 
