@@ -127,6 +127,10 @@ Material:
         first:
           name: _Metallic
         second: 0
+      data:
+        first:
+          name: _RimPower
+        second: 2.82999992
     m_Colors:
       data:
         first:
@@ -136,3 +140,7 @@ Material:
         first:
           name: _Color
         second: {r: 0, g: 0, b: 0, a: 1}
+      data:
+        first:
+          name: _RimColor
+        second: {r: .867647052, g: .867647052, b: .867647052, a: 0}
