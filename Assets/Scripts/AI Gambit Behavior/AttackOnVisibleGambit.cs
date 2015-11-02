@@ -15,7 +15,10 @@ namespace AI.Gambits {
 			public GambitInternal( GambitInfo info, Character character )
 				: base( character ) {
                 
-				character.pawn.GetSphereSensor().Select( _ => _.character ).Subscribe( OnTargetEnter );
+				character.pawn.GetSphereSensor()
+					.Select( _ => _.character )
+					.Where( _=> _ != null )
+					.Subscribe( OnTargetEnter );
 			}
 
 			public override bool Execute() {
