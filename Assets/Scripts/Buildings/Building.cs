@@ -12,7 +12,7 @@ public class Building : MonoBehaviour {
 
     public EffectsBase[] effects;
 
-    private void Start() {
+    private void Awake() {
 
         instances.Add( this );
     }
