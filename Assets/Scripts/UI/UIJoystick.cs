@@ -18,6 +18,9 @@ public class UIJoystick : AObject, IBeginDragHandler, IEndDragHandler, IDragHand
     public static UIJoystick instance { get; private set; }
 
     [SerializeField]
+    private bool _normalize;
+
+    [SerializeField]
     private Mode mode;
 
     [SerializeField]
@@ -54,13 +57,15 @@ public class UIJoystick : AObject, IBeginDragHandler, IEndDragHandler, IDragHand
         //if ( simulateInput ) {
 
         var simulatedInput = alternativeMode ?
-            FormVector( Input.GetAxis( "Horizontal Alt" ), Input.GetAxis( "Vertical Alt" ) ) :
-            FormVector( Input.GetAxis( "Horizontal" ), Input.GetAxis( "Vertical" ) );
+            MakeVector( Input.GetAxis( "Horizontal Alt" ), Input.GetAxis( "Vertical Alt" ) ) :
+            MakeVector( Input.GetAxis( "Horizontal" ), Input.GetAxis( "Vertical" ) );
         //}
 //#endif
         var result = Vector3.ClampMagnitude( ( position - root.position ) / radius, 1f );
 
-        return FormVector( result.x, result.y ) + simulatedInput;
+        result = MakeVector( result.x, result.y ) + simulatedInput;
+        
+        return _normalize ? result.normalized : result;
     }
 
     public void OnBeginDrag( PointerEventData eventData ) {
@@ -78,7 +83,7 @@ public class UIJoystick : AObject, IBeginDragHandler, IEndDragHandler, IDragHand
         position = eventData.position;
     }
 
-    private Vector3 FormVector( float horizontal, float vertical ) {
+    private Vector3 MakeVector( float horizontal, float vertical ) {
 
         switch ( mode ) {
 
