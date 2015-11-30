@@ -73,9 +73,9 @@ public class Character {
 
         if ( health <= 0 ) {
 
-            instances.Remove( this );
+            EventSystem.RaiseEvent( new Died { character = this } );
 
-            EventSystem.RaiseEvent( new Died {character = this} );
+            instances.Remove( this );
 
             //_compositeDisposable.Dispose();
         }
@@ -90,15 +90,7 @@ public class Character {
     public void Dispose() {
 
         _compositeDisposable.Dispose();
-    }
-
-    public void ApproachAndInteract( Character target ) {
-    }
-
-    public void ApproachAndInteract( ItemView target ) {
-    }
-
-    public void ApproachAndInteract( Vector3 target ) {
+        health.Dispose();
     }
 
     private void UpdatePawnSpeed( float speed ) {

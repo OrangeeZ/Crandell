@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class CrowdElement : MonoBehaviour {
 
@@ -9,6 +10,13 @@ public class CrowdElement : MonoBehaviour {
 
 	private PlanetSurfaceTransform _planetTransform;
 	private readonly Transform _transform;
+
+	private HashSet<CrowdElement> _testedElements;
+
+	void Awake() {
+
+		_testedElements = new HashSet<CrowdElement>();
+	}
 
 	public CrowdElement( Transform transform ) {
 
@@ -24,6 +32,23 @@ public class CrowdElement : MonoBehaviour {
 
 		var result = otherElement.spatialHash - spatialHash;
 		return result.x.Abs() < 2 && result.y.Abs() < 2 && result.z.Abs() < 2;
+	}
+
+	public Vector3 CalculatePunishingForce( CrowdElement other ) {
+
+		//other._testedElements.Add( this );
+
+		return sphereCollider.CalculatePunishingForce( other.sphereCollider );
+	}
+
+	public bool CanBeTested( CrowdElement other ) {
+
+		return !_testedElements.Contains( other );
+	}
+
+	public void Reset() {
+		
+		_testedElements.Clear();
 	}
 
 	private void Update() {

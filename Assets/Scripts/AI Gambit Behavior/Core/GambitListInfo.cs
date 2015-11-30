@@ -9,12 +9,6 @@ using UnityEngine.ScriptableObjectWizard;
 
 namespace AI.Gambits {
 
-    public interface IGambitList {
-
-        void Tick();
-
-    }
-
     [Category( "Gambits" )]
     public class GambitListInfo : ScriptableObject {
 
@@ -27,15 +21,16 @@ namespace AI.Gambits {
 
             public IReadOnlyReactiveProperty<object> targets { get; private set; }
 
-            private IList<Gambit> gambits;
+            private IList<Gambit> _gambits;
 
-            private readonly GambitListInfo gambitListInfo;
+            private readonly GambitListInfo _gambitListInfo;
 
             private IDisposable _disposable;
+            private Character _character;
 
             public GambitList( GambitListInfo gambitListInfo ) {
 
-                this.gambitListInfo = gambitListInfo;
+                this._gambitListInfo = gambitListInfo;
 
                 moveInput = new Subject<Vector3>();
                 targets = new ReactiveProperty<object>();
@@ -43,14 +38,21 @@ namespace AI.Gambits {
 
             public void Initialize( Character character ) {
 
-                this.gambits = gambitListInfo.gambitInfos.Select( _ => _.GetGambit( character ) ).ToArray();
+                this._character = character;
+                this._gambits = _gambitListInfo.gambitInfos.Select( _ => _.GetGambit( character ) ).ToArray();
 
                 _disposable = Observable.EveryUpdate().Subscribe( Tick );
             }
 
             private void Tick( long ticks ) {
-
-                gambits.FirstOrDefault( thatCan => thatCan.Execute() );
+                
+                if (_character != null) {
+                    
+                    _gambits.FirstOrDefault( thatCan => thatCan.Execute() );
+                } else {
+                    
+                    Dispose();
+                }
             }
 
             public void Dispose() {

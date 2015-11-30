@@ -153,10 +153,6 @@ public class CharacterPlanetPawn : CharacterPawn {
             return;
         }
 
-        //  var intersectingGroups = CollisionSystem.Instance.Groups
-        //                                                   .Where( _ => _.Intersects(_sphereCollider))
-        //                                                   .SelectMany( _ => _.Colliders );
-
         var punishingForce = Building.instances.Select ( _ => _.sphereCollider )
             .Select( _ => _.CalculatePunishingForce( _sphereCollider ) )
             .Aggregate( Vector3.zero, ( total, each ) => each + total );
