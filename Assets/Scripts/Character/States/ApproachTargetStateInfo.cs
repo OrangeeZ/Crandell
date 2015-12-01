@@ -4,7 +4,6 @@ using UniRx;
 using System.Collections;
 using UnityEngine.ScriptableObjectWizard;
 using Utility;
-using System.Monads;
 
 [Category( "Character states" )]
 public class ApproachTargetStateInfo : CharacterStateInfo {
@@ -69,13 +68,13 @@ public class ApproachTargetStateInfo : CharacterStateInfo {
                 destination = (Vector3) target;
             } else if ( target is Character ) {
 
-                destination = ( target as Character ).With(_ => _.pawn).With(_ => _.transform);
+                destination = ( target as Character ).pawn.transform;
             } else if ( target is ItemView ) {
 
                 destination = ( target as ItemView ).transform;
             }
 
-            if ( destination.HasValue && typedInfo.autoActivate ) {
+            if ( typedInfo.autoActivate ) {
 
                 stateController.TrySetState( this );
             }

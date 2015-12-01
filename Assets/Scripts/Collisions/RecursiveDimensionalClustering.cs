@@ -87,8 +87,6 @@ namespace Utility.Collisions {
 			
 			var groups = new List<IList<SimpleSphereCollider>>();
 			
-			UnityEngine.Debug.Log(group.Count);
-			
 			Clusterize( groups, _pairs, group, Axis.X );
 			
 			return groups;

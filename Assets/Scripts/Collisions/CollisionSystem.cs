@@ -45,8 +45,6 @@ public class CollisionSystem : MonoBehaviour {
 		
 		foreach (var each in groups) {
 			
-			Debug.Log( each.Count );
-			
 			if (each.Count > 0) {
 				
 				collisionGroups.Add( new CollisionGroup(each) );
