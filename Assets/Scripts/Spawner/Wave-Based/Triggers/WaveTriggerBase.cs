@@ -5,10 +5,13 @@ public class WaveTriggerBase : ScriptableObject {
 
 	public event System.Action OnTrigger;
 
+	public virtual void Initialize() {
+		
+
+	}
+
 	protected void NotifyTrigger() {
-
-		Debug.Log( "Trigger!" );
-
+		
 		if ( OnTrigger != null ) {
 
 			OnTrigger();

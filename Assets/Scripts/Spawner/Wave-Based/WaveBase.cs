@@ -12,6 +12,7 @@ public class WaveBase : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		WaveTrigger.Initialize();
 		WaveTrigger.OnTrigger += WaveTriggerOnOnTrigger;
 	}
 	private void WaveTriggerOnOnTrigger() {

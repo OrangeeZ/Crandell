@@ -8,22 +8,9 @@ public class TimerWaveTrigger : WaveTriggerBase {
 	public float Duration;
 	private bool _didFire;
 
-	private void OnEnable() {
+	public override void Initialize() {
 
-		Observable.EveryUpdate().Subscribe( OnUpdate );
-		//new PMonad().Add( Tick() ).Execute();
-	}
-
-	private void OnUpdate(long ticks) {
-
-		if ( _didFire ) return;
-
-		_timeCurrent += Time.deltaTime;
-
-		if ( _timeCurrent >= Duration ) {
-			NotifyTrigger();
-			_didFire = true;
-		}
+		new PMonad().Add( Tick() ).Execute();
 	}
 
 	private IEnumerable Tick() {
@@ -31,8 +18,6 @@ public class TimerWaveTrigger : WaveTriggerBase {
 		yield return null;
 
 		while ( true ) {
-
-			Debug.Log( _timeCurrent );
 
 			_timeCurrent += Time.deltaTime;
 
