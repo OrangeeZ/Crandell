@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using UniRx;
 
 public class WaveBase : MonoBehaviour {
 
@@ -11,22 +12,18 @@ public class WaveBase : MonoBehaviour {
 	public WaveTriggerBase WaveTrigger;
 
 	// Use this for initialization
-	void Start () {
+	private void Start() {
 		WaveTrigger.Initialize();
-		WaveTrigger.OnTrigger += WaveTriggerOnOnTrigger;
+		WaveTrigger.Subscribe( OnWaveTriggerEvent );
+		//WaveTrigger.OnTrigger += WaveTriggerOnOnTrigger;
 	}
-	private void WaveTriggerOnOnTrigger() {
+	private void OnWaveTriggerEvent( object nullObject ) {
 		Spawn();
-	}
-
-	// Update is called once per frame
-	void Update () {
-	
 	}
 
 	private void Spawn() {
 		Debug.Log( 123124 );
-		foreach ( GameObject spawner in Spawners  ) {
+		foreach ( var spawner in Spawners ) {
 			var character = characterInfo.GetCharacter( startingPosition: spawner.transform.position );
 			character.itemToDrop = default ( ItemInfo ); /* fixit */
 			if ( startingWeapon != null ) {
@@ -41,4 +38,5 @@ public class WaveBase : MonoBehaviour {
 			}
 		}
 	}
+
 }
